@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('sponsorships', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->decimal('price');
+            $table->integer('duration');
             $table->timestamps();
         });
     }
 
-    /**
+    /**''
      * Reverse the migrations.
      *
      * @return void
