@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\SponsorshipsTableSeeder;
+use Database\Seeders\SpecialisationsTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             SponsorshipsTableSeeder::class,
+            SpecialisationsTableSeeder::class,
             
             
         ]);
