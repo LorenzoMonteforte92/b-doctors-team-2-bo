@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('telephone_number');
-            $table->string('curriculum_vitae');
+            $table->string('curriculum_vitae')->nullable();
             $table->text('performance');
-            $table->text('bio');
-            $table->boolean('visibility');
+            $table->text('bio')->nullable();
+            $table->boolean('visibility')->default(true);
             $table->timestamps();
         });
     }
