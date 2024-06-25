@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->text('description');
             $table->timestamps();
         });
     }

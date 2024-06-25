@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('profile_sponsorship', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
         });
     }
