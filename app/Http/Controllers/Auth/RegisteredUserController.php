@@ -37,17 +37,15 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'address' => ['required', 'string', 'max:255' ]
         ]);
-        // genera slug e se è gia presente aggiunge numeri random
-        $slug = Str::slug($request->name);
-        $slug_base = $slug;
-        $i = 1;
-        while(User::whereSlug($slug)->first()) {
-            $slug = $slug_base . '-' . $i;
-            $i++;
-        }
+        // You could use inbuilt Str class, and create some random strings in your Post slug. Example:
+        // static::creating(function ($course){
+        //     $course->slug = str_slug($course->name . Str::random( 2 ));
+        // });
+        // Genera slug usando inbuilt Str class
+        $slug = Str::slug($request->name . Str::random(2));
+        
 
-
-        // $slug = Str::slug($request->name, '-').rand(1,100);
+        
         
 
         $user = User::create([
