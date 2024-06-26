@@ -38,13 +38,16 @@ class RegisteredUserController extends Controller
             'address' => ['required', 'string', 'max:255' ]
         ]);
 
+        $slug = Str::slug($request->name, '-');
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'address' => $request->address,
-            'slug' => Str::slug($request->name, '-'),
+            'slug' => $slug,
         ]);
+
 
         event(new Registered($user));
 
