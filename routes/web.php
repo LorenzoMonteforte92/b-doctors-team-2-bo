@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified'])
 ->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('profiles', ProfessionalProfileController::class)->parameters([
-        'profiles' => 'profile:slug'
+        'profiles' => 'profile:id'
     ]);
 });
 

@@ -66,13 +66,9 @@ class ProfessionalProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile)
-    {
-
-        $profiles = Profile::all();
-
-        // return
-        return view('admin.profiles.edit', compact('profiles'));
-    }
+{
+    return view('admin.profiles.edit', compact('profile'));
+}
 
     /**
      * Update the specified resource in storage.
@@ -94,7 +90,7 @@ class ProfessionalProfileController extends Controller
         $profileData = $request->all();
         $profile->update($profileData);
 
-        return redirect()->route('admin.profiles.show',['profile' => $profile->slug])->with('message', $profile->name . ' successfully updated.');
+        return redirect()->route('admin.profiles.show',['profile' => $profile->id])->with('message', $profile->id . ' successfully updated.');
 
     }
 
