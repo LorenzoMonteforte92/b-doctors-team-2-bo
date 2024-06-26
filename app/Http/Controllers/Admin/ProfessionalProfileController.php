@@ -9,6 +9,7 @@ use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
+use App\Models\User;
 
 class ProfessionalProfileController extends Controller
 {

@@ -15,9 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-
-        return view('admin.profiles.index', compact('user'));
+        
     }
 
     /**
@@ -49,9 +47,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        return view('admin.profiles.show', [
-            'user' => User::all()
-        ]);
+        
     }
 
     /**
