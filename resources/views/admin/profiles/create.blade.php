@@ -7,32 +7,32 @@
         @csrf
         
         <div class="mb-4">
-            <label for="cover_image" class="form-label">Curriculum</label>
+            <label for="cover_image" class="form-label"><strong>Curriculum</strong></label>
             <input class="form-control" type="file" id="cover_image" name="cover_image">
         </div>
 
         <div class="mb-4">
-            <label for="client_name" class="form-label">Specializzazioni</label>
+            <label for="client_name" class="form-label"><strong>Specializzazioni</strong></label><br>
             @foreach ($specialisations as $specialisation)
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    {{ $specialisation->name }}<br>
+                    {{ $specialisation->name }}
                 </label>
             @endforeach
         </div>
 
         <div class="mb-4">
-            <label for="cover_image" class="form-label">Fotografia</label>
+            <label for="cover_image" class="form-label"><strong>Fotografia</strong></label>
             <input class="form-control" type="file" id="cover_image" name="cover_image">
         </div>
 
         <div class="mb-4">
-            <label for="summary" class="form-label">Indirizzo</label>
+            <label for="summary" class="form-label"><strong>Indirizzo</strong></label>
             <input class="form-control" type="text" id="summary" name="summary"></input>
         </div>
 
         <div class="mb-4">
-            <label for="summary" class="form-label">Telefono</label>
+            <label for="summary" class="form-label"><strong>Telefono</strong></label>
             <input class="form-control" type="text" id="summary" name="summary"></input>
         </div>
 
