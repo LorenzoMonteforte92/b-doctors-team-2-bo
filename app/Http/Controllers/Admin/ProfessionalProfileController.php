@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Review;
+use App\Models\Rating;
+use App\Models\Message;
 
 class ProfessionalProfileController extends Controller
 {
@@ -14,7 +17,11 @@ class ProfessionalProfileController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::all();
+        $ratings = Rating::all();
+        $messages = Message::all();
+
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages'));
     }
 
     /**
