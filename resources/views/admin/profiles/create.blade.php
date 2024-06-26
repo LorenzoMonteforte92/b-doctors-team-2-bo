@@ -15,7 +15,7 @@
             <label for="client_name" class="form-label"><strong>Specializzazioni</strong></label><br>
             @foreach ($specialisations as $specialisation)
                 <span class="form-check">
-                    <input class="form-check-input" @checked(in_array($specialisation->id, old('$specialisations', []))) name="$specialisations[]" type="checkbox" value="{{ $specialisation->id }}" id="$specialisation-{{ $specialisation->id }}">
+                    <input class="form-check-input" @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox" value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
                     <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
                         {{ $specialisation->name }}
                     </label>
