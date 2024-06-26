@@ -69,7 +69,7 @@ class ProfessionalProfileController extends Controller
     {
 
         $profiles = Profile::all();
-        
+
         // return
         return view('admin.profiles.edit', compact('profiles'));
     }
@@ -83,9 +83,19 @@ class ProfessionalProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        // $request->validate([
-        //     'photo' => 'nullable|image|max:1024',
-        //     'telephone_number' => ''
+        $request->validate([
+            'photo' => 'nullable|url',
+            'telephone_number' => 'required|string|max:15',
+            'curriculum_vitae' => 'nullable|string',
+            'bio' => 'nullable|string',
+            'performance' => 'string',
+            'visibility' => 'boolean'
+        ]);
+        $profileData = $request->all();
+        $profile->update($profileData);
+
+        return redirect()->route('admin.profiles.show',['profile' => $profile->slug])->with('message', $profile->name . ' successfully updated.');
+
     }
 
     /**
