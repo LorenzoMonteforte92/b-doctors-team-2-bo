@@ -14,10 +14,11 @@
         <div class="mb-4">
             <label for="client_name" class="form-label">Specializzazioni</label>
             @foreach ($specialisations as $specialisation)
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                {{ $specialisation }}
-            </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    {{ $specialisation->name }}<br>
+                </label>
+            @endforeach
         </div>
 
         <div class="mb-4">
