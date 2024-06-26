@@ -9,6 +9,7 @@ use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
+use App\Models\User;
 
 class ProfessionalProfileController extends Controller
 {
@@ -22,8 +23,9 @@ class ProfessionalProfileController extends Controller
         $reviews = Review::all();
         $ratings = Rating::all();
         $messages = Message::all();
+        $profiles = Profile::all();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages','profiles'));
     }
 
     /**
@@ -69,9 +71,9 @@ class ProfessionalProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Profile $profile)
     {
-        //
+        return view('admin.profiles.show', compact('profile'));
     }
 
     /**
