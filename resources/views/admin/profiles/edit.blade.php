@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Edita Profilo</h2>
-    <form action="{{ route('profiles.update', $profiles->id) }}" method="POST">
+    <form action="{{ route('admin.profiles.update', $profile->slug) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

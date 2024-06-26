@@ -12,9 +12,9 @@
         <tbody>
             @foreach ($reviews as $review)
                 <tr>
-                    <td><strong>{{ $review->name }}</strong></td>
+                    <td>{{ $review->name }}</td>
                     <td>{{ $review->description }}</td>
-                    {{-- <td>{{ $review->score }}</td> --}}
+                    <td>{{ $review->score }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -30,7 +30,7 @@
         <tbody>
             @foreach ($messages as $message)
                 <tr>
-                    <td><strong>{{ $message->name }}</strong></td>
+                    <td>{{ $message->name }}</td>
                     <td>{{ $message->description }}</td>
                     <td>{{ $message->email }}</td>
                     <td>{{ $message->date }}</td>
