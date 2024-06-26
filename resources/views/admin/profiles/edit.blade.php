@@ -26,7 +26,7 @@
 
         <div class="form-group py-2">
             <label for="bio">Bio:</label>
-            <textarea class="form-control" id="bio" name="bio">{{ old('bio', $profile->bio) }}</textarea>
+            <textarea class="form-control" rows="15" id="bio" name="bio">{{ old('bio', $profile->bio) }}</textarea>
         </div>
 
         <div class="form-group py-2">
