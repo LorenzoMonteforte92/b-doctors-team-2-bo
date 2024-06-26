@@ -104,7 +104,7 @@ class ProfessionalProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         $request->validate([
-            'photo' => 'nullable|url',
+            'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'telephone_number' => 'required|string|max:15',
             'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'bio' => 'nullable|string',
@@ -118,6 +118,13 @@ class ProfessionalProfileController extends Controller
             // $profile->bio = $request->input('bio');
             // $profile->performance = $request->input('performance');
             $form = $request->all();
+            if ($request->hasFile('photo')) {
+                if ($profile->photo) {
+                    Storage::delete($profile->photo);
+                }
+                $img_path = Storage::disk('public')->put('projects_images', $form['photo']);
+                $form['photo'] = $img_path;
+            }
             if ($request->hasFile('curriculum_vitae')) {
                 if ($profile->curriculum_vitae) {
                     Storage::delete($profile->curriculum_vitae);

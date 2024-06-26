@@ -20,7 +20,7 @@
 
         <div class="form-group py-2">
             <label for="photo">Foto Profilo:</label>
-            <input type="text" class="form-control" id="photo" name="photo" value="{{ old('photo', $profile->photo) }}">
+            <input type="file" class="form-control" id="photo" name="photo" value="{{ old('photo', $profile->photo) }}">
         </div>
 
         <div class="form-group py-2">

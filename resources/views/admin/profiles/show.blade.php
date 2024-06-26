@@ -12,6 +12,7 @@
         <div class="my-2"><strong>INDIRIZZO</strong>: {{ $user->address }}</div>
         <div class="my-2"><strong>TELEFONO</strong>: {{ $profile->telephone_number }}</div>
         @if ($profile->curriculum_vitae)
+            <div><strong>CURRICULUM:</strong></div>
             <img src="{{ asset('storage/' . $profile->curriculum_vitae) }}" alt="{{ $profile->name }}">
         @endif
         <div class="my-2"><strong>PRESTAZIONI</strong>: {{ $profile->performance }}</div>
