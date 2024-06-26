@@ -55,13 +55,23 @@ class ProfessionalProfileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'photo' => 'nullable|url',
+            'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'telephone_number' => 'required|string|max:15',
-            'curriculum_vitae' => 'nullable|string',
+            'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'bio' => 'nullable|string',
             'performance' => 'nullable|string',
         ]);
         $profileData = $request->all();
+
+        if ($request->hasFile('photo')) {
+            $img_path = Storage::disk('public')->put('projects_images', $profileData['photo']);
+            $profileData['photo'] = $img_path;
+        }
+        if ($request->hasFile('curriculum_vitae')) {
+            $img_path = Storage::disk('public')->put('projects_images', $profileData['curriculum_vitae']);
+            $profileData['curriculum_vitae'] = $img_path;
+        }
+        
         $newProfile = new Profile();
         $newProfile->fill($profileData);
         $newProfile->save();
