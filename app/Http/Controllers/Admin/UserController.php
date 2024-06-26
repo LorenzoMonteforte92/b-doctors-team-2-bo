@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+
+        return view('admin.profiles.index', compact('user'));
     }
 
     /**
@@ -45,15 +47,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show()
     {
-        $data = [
-
-            'user' => $user,
-
-        ];
-
-        return view('admin.profiles.show', $data);
+        return view('admin.profiles.show', [
+            'user' => User::all()
+        ]);
     }
 
     /**
