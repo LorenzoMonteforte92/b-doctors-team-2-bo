@@ -3,7 +3,6 @@
 @section('content')
 
     <h1>RECENSIONI RICEVUTE</h1>
-    {{dd($user)}}
     <table class="table table-bordered border-primary align-middle">
         <thead>
             <th class="text-center">Nome utente</th>
