@@ -45,7 +45,22 @@ class ProfessionalProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'photo' => 'nullable|url',
+            'telephone_number' => 'required|string|max:15',
+            'curriculum_vitae' => 'nullable|string',
+            'bio' => 'nullable|string',
+            'performance' => 'string',
+            'visibility' => 'boolean'
+        ]);
+        $profileData = $request->all();
+        $newProfile = new Profile();
+        $newProfile->fill($profileData);
+        $newProfile->save();
+
+
+        return redirect()->route('admin.profiles.show');
+
     }
 
     /**
