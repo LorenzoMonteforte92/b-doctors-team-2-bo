@@ -37,8 +37,17 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'address' => ['required', 'string', 'max:255' ]
         ]);
-        // genera slug con aggiunta di 2 numeri random
-        $slug = Str::slug($request->name, '-').rand(1,100);
+        // genera slug e se è gia presente aggiunge numeri random
+        $slug = Str::slug($request->name);
+        $slug_base = $slug;
+        $i = 1;
+        while(User::whereSlug($slug)->first()) {
+            $slug = $slug_base . '-' . $i;
+            $i++;
+        }
+
+
+        // $slug = Str::slug($request->name, '-').rand(1,100);
         
 
         $user = User::create([
