@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\Rating;
+use App\Models\Message;
 
 class ProfessionalProfileController extends Controller
 {
@@ -18,8 +19,9 @@ class ProfessionalProfileController extends Controller
     {
         $reviews = Review::all();
         $ratings = Rating::all();
+        $messages = Message::all();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages'));
     }
 
     /**
