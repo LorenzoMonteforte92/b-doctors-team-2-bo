@@ -6,7 +6,7 @@
         @if ($profile->photo)
             <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}">
         @endif
-        <div class="my-2"><strong>ID</strong>: {{ $user->id }}</div>
+        <div class="my-2"><strong>ID</strong>: {{ $profile->id }}</div>
         <div class="my-2"><strong>EMAIL</strong>: {{ $user->email }}</div>
         <div class="my-2"><strong>NOME</strong>: {{ $user->name }}</div>
         <div class="my-2"><strong>INDIRIZZO</strong>: {{ $user->address }}</div>

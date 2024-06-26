@@ -37,6 +37,14 @@
             <label for="telephone_number" class="form-label"><strong>Telefono</strong></label>
             <input class="form-control" type="text" id="telephone_number" name="telephone_number"></input>
         </div>
+        <div class="mb-4">
+            <label for="bio" class="form-label"><strong>Bio</strong></label>
+            <textarea class="form-control" rows="15" id="bio" name="bio"></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="performance" class="form-label"><strong>Prestazioni</strong></label>
+            <textarea class="form-control" rows="15" id="performance" name="performance"></textarea>
+        </div>
 
         <button type="submit" class="btn btn-primary mb-4">Salva</button>
     </form>
