@@ -3,7 +3,6 @@
 @section('content')
     <h2>IL TUO PROFILO</h2>
     <div class="profile-wrapper">
-        
         @if ($profile->photo)
             <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}">
         @endif

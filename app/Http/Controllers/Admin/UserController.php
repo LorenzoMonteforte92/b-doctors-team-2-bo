@@ -47,7 +47,13 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.profiles.show', compact('user'));
+        $data = [
+
+            'user' => $user,
+
+        ];
+
+        return view('admin.profiles.show', $data);
     }
 
     /**
