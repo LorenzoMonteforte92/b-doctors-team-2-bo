@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Specialisation;
+use App\Models\Profile;
 
 class ProfessionalProfileController extends Controller
 {
@@ -64,9 +65,13 @@ class ProfessionalProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        //
+
+        $profiles = Profile::all();
+        
+        // return
+        return view('admin.profiles.edit', compact('profile'));
     }
 
     /**
@@ -76,9 +81,11 @@ class ProfessionalProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile)
     {
-        //
+        // $request->validate([
+        //     'photo' => 'nullable|image|max:1024',
+        //     'telephone_number' => ''
     }
 
     /**
