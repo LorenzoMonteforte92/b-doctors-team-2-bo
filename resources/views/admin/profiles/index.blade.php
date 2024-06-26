@@ -3,6 +3,9 @@
 @section('content')
 
     <h1>RECENSIONI RICEVUTE</h1>
+    <button class="btn btn-dark my-2">
+        <a href="{{ route('admin.profiles.show', $profiles->id) }}">View Project</a>
+    </button>
     <table class="table table-bordered border-primary align-middle">
         <thead>
             <th class="text-center">Nome utente</th>

@@ -22,8 +22,9 @@ class ProfessionalProfileController extends Controller
         $reviews = Review::all();
         $ratings = Rating::all();
         $messages = Message::all();
+        $profiles = Profile::all();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages','profiles'));
     }
 
     /**
