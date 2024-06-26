@@ -13,6 +13,8 @@ use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProfessionalProfileController extends Controller
 {
@@ -101,20 +103,28 @@ class ProfessionalProfileController extends Controller
         $request->validate([
             'photo' => 'nullable|url',
             'telephone_number' => 'required|string|max:15',
-            'curriculum_vitae' => 'nullable|file|mimes:pdf,doc,docx',
+            'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'bio' => 'nullable|string',
             'performance' => 'nullable|string',
             'visibility' => 'boolean'
 
         ]);
             //Campi Imput per richiamare l'edit //
-            $profile->photo = $request->input('photo');
-            $profile->telephone_number = $request->input('telephone_number');
-            $profile->bio = $request->input('bio');
-            $profile->performance = $request->input('performance');
+            // $profile->photo = $request->input('photo');
+            // $profile->telephone_number = $request->input('telephone_number');
+            // $profile->bio = $request->input('bio');
+            // $profile->performance = $request->input('performance');
+            $form = $request->all();
+            if ($request->hasFile('curriculum_vitae')) {
+                if ($profile->curriculum_vitae) {
+                    Storage::delete($profile->curriculum_vitae);
+                }
+                $img_path = Storage::disk('public')->put('projects_images', $form['curriculum_vitae']);
+                $form['curriculum_vitae'] = $img_path;
+            }
         
     
-            $profile->save();
+            $profile->update($form);
     
         return redirect()->route('admin.profiles.show', ['profile' => $profile->id])->with('message', 'Profilo aggiornato con successo.');
     }

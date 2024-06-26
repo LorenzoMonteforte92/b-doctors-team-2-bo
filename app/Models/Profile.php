@@ -14,6 +14,7 @@ use App\Models\Sponsorship;
 class Profile extends Model
 {
     use HasFactory;
+    protected $fillable = ['photo', 'telephone_number', 'curriculum_vitae', 'bio', 'performance', 'visibility'];
 
     public function review() {
         return $this->belongsTo(Review::class);
