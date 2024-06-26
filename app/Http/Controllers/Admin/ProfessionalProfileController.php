@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\Rating;
 use App\Models\Message;
+use App\Models\Specialisation;
 
 class ProfessionalProfileController extends Controller
 {
@@ -31,7 +32,8 @@ class ProfessionalProfileController extends Controller
      */
     public function create()
     {
-        //
+        $specialisations = Specialisation::all();
+        return view('admin.profiles.create', compact('specialisations'));
     }
 
     /**
