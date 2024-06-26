@@ -13,6 +13,7 @@ use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessionalProfileController extends Controller
 {
@@ -27,8 +28,9 @@ class ProfessionalProfileController extends Controller
         $ratings = Rating::all();
         $messages = Message::all();
         $profiles = Profile::all();
+        $user = Auth::user();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }
 
     /**
@@ -75,7 +77,8 @@ class ProfessionalProfileController extends Controller
     public function show($id)
     {
         $profile = Profile::findOrFail($id);
-        return view('admin.profiles.show', compact('profile'));
+        $user = Auth::user();
+        return view('admin.profiles.show', compact('profile', 'user'));
     }
 
     /**
