@@ -14,8 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('profile_specialisation', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            
+            $table->unsignedBigInteger('profile_id');
+            $table->foreign('profile_id')
+            ->references('id')
+            ->on('profiles')
+            ->onDelete('cascade');
+
+            $table->unsignedBigInteger('specialisation_id');
+            $table->foreign('specialisation_id')
+            ->references('id')
+            ->on('specialisations')
+            ->onDelete('cascade');
+
+            $table->primary(['profile_id', 'specialisation_id']);
         });
     }
 
