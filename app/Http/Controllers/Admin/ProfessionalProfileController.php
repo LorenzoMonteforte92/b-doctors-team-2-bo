@@ -94,7 +94,7 @@ class ProfessionalProfileController extends Controller
         $profileData = $request->all();
         $profile->update($profileData);
 
-        return redirect()->route('admin.profiles.show',['profile' => $profile->slug])->with('message', $profile->name . ' successfully updated.');
+        return redirect()->route('admin.profiles.show');
 
     }
 
