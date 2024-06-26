@@ -71,7 +71,7 @@ class ProfessionalProfileController extends Controller
         $profiles = Profile::all();
         
         // return
-        return view('admin.profiles.edit', compact('profile'));
+        return view('admin.profiles.edit', compact('profiles'));
     }
 
     /**
