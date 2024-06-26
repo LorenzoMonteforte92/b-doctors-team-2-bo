@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>IL TUO PROFILO</h2>
-    
+    {{dd($user)}}
     <div class="profile-wrapper">
         @if ($profile->photo)
             <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}">
