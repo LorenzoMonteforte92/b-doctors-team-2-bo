@@ -39,6 +39,14 @@ class RegisteredUserController extends Controller
         ]);
 
         $slug = Str::slug($request->name, '-');
+        $originalSlug = $slug; 
+
+        $counter = 0;
+
+        if (User::where('slug', $slug)->exists()){
+           $slug =  $originalSlug . '-' . $counter;
+           $counter++;
+        }
 
         $user = User::create([
             'name' => $request->name,
