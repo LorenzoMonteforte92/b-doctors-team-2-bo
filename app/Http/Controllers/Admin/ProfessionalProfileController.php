@@ -65,7 +65,7 @@ class ProfessionalProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit($id)
     {
 
         $profiles = Profile::all();
