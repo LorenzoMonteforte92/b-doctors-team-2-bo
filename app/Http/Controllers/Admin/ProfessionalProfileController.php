@@ -24,7 +24,7 @@ class ProfessionalProfileController extends Controller
         $messages = Message::all();
         $profiles = Profile::all();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages','profiles'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles'));
     }
 
     /**
@@ -51,16 +51,14 @@ class ProfessionalProfileController extends Controller
             'telephone_number' => 'required|string|max:15',
             'curriculum_vitae' => 'nullable|string',
             'bio' => 'nullable|string',
-            'performance' => 'string',
-            'visibility' => 'boolean'
+            'performance' => 'nullable|string',
         ]);
         $profileData = $request->all();
         $newProfile = new Profile();
         $newProfile->fill($profileData);
         $newProfile->save();
 
-
-        return redirect()->route('admin.profiles.show');
+        return redirect()->route('admin.profiles.show', ['profile' => $newProfile->id]);
 
     }
 
@@ -70,27 +68,28 @@ class ProfessionalProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show($id)
     {
+        $profile = Profile::findOrFail($id);
         return view('admin.profiles.show', compact('profile'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile)
-{
-    return view('admin.profiles.edit', compact('profile'));
-}
+    {
+        return view('admin.profiles.edit', compact('profile'));
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Profile $profile)
@@ -98,16 +97,22 @@ class ProfessionalProfileController extends Controller
         $request->validate([
             'photo' => 'nullable|url',
             'telephone_number' => 'required|string|max:15',
-            'curriculum_vitae' => 'nullable|string',
+            'curriculum_vitae' => 'nullable|file|mimes:pdf,doc,docx',
             'bio' => 'nullable|string',
-            'performance' => 'string',
+            'performance' => 'nullable|string',
             'visibility' => 'boolean'
+
         ]);
-        $profileData = $request->all();
-        $profile->update($profileData);
-
-        return redirect()->route('admin.profiles.show',['profile' => $profile->id])->with('message', $profile->id . ' successfully updated.');
-
+            //Campi Imput per richiamare l'edit //
+            $profile->photo = $request->input('photo');
+            $profile->telephone_number = $request->input('telephone_number');
+            $profile->bio = $request->input('bio');
+            $profile->performance = $request->input('performance');
+        
+    
+            $profile->save();
+    
+        return redirect()->route('admin.profiles.show', ['profile' => $profile->id])->with('message', 'Profilo aggiornato con successo.');
     }
 
     /**
@@ -118,6 +123,9 @@ class ProfessionalProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profile = Profile::findOrFail($id);
+        $profile->delete();
+
+        return redirect()->route('admin.profiles.index')->with('message', 'Profile successfully deleted.');
     }
 }
