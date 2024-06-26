@@ -45,8 +45,7 @@ class ProfilesTableSeeder extends Seeder
                 // 'email' => 'paolo.verdi@ospedalepadova.it',
                 // 'address' => 'Via San Francesco 18, Padova',
                 'telephone_number' => '+39 049 1239876',
-                'performance' => 'Diagnosi e trattamento delle malattie neurodegenerative, elettromiografia, consulenze
-                                  neurologiche',
+                'performance' => 'Diagnosi e trattamento delle malattie neurodegenerative, elettromiografia, consulenze neurologiche',
                 'bio' => "Paolo Verdi è un giovane neurologo, laureatosi da poco all'Università di Padova. Attualmente lavora presso l'Ospedale Civile di Padova, dove si occupa principalmente di disturbi neurodegenerativi. È autore di diverse pubblicazioni su riviste accademiche."
             ],
             [
