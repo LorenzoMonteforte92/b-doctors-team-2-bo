@@ -14,10 +14,13 @@
         <div class="mb-4">
             <label for="client_name" class="form-label"><strong>Specializzazioni</strong></label><br>
             @foreach ($specialisations as $specialisation)
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    {{ $specialisation->name }}
-                </label>
+                <span class="form-check">
+                    <input class="form-check-input" @checked(in_array($specialisation->id, old('$specialisations', []))) name="$specialisations[]" type="checkbox"
+                        value="{{ $specialisation->id }}" id="$specialisation-{{ $specialisation->id }}">
+                    <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
+                        {{ $specialisation->name }}
+                    </label>
+                </span>
             @endforeach
         </div>
 
