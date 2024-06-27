@@ -76,7 +76,7 @@ class ProfessionalProfileController extends Controller
         $newProfile->fill($profileData);
         $newProfile->save();
 
-        return redirect()->route('admin.profiles.show', ['profile' => $newProfile->id]);
+        return redirect()->route('admin.profiles.show', ['profile' => $newProfile->id])->with('message','Nuovo profilo creato con successo');
 
     }
 
