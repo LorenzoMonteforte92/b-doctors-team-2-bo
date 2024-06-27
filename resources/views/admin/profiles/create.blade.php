@@ -60,12 +60,12 @@
 
         <div class="mb-4">
             <label for="bio" class="form-label"><strong>Bio</strong></label>
-            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="15" id="bio" name="bio"></textarea>
+            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="8" id="bio" name="bio"></textarea>
         </div>
 
         <div class="mb-4">
             <label for="performance" class="form-label"><strong>Prestazioni</strong></label>
-            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="15" id="performance" name="performance"></textarea>
+            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="8" id="performance" name="performance"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary mb-4">Salva</button>
