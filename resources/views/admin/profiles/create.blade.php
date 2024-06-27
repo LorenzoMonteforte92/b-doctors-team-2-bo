@@ -35,6 +35,9 @@
                     </label>
                 </span>
             @endforeach
+            @error('specialisations')
+                <div class="invalid-feedback">{{$message}}</div>
+            @enderror
         </div>
 
         <div class="mb-4">
@@ -48,6 +51,9 @@
         <div class="mb-4">
             <label for="address" class="form-label"><strong>Indirizzo *</strong></label>
             <input class="form-control @error('address') is-invalid @enderror " type="text" id="address" name="address"></input>
+            @error('address')
+                <div class="invalid-feedback">{{$message}}</div>
+            @enderror
         </div>
 
         <div class="mb-4">
@@ -60,12 +66,18 @@
 
         <div class="mb-4">
             <label for="bio" class="form-label"><strong>Bio</strong></label>
-            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="15" id="bio" name="bio"></textarea>
+            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="8" id="bio" name="bio"></textarea>
+            @error('bio')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-4">
             <label for="performance" class="form-label"><strong>Prestazioni</strong></label>
-            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="15" id="performance" name="performance"></textarea>
+            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="8" id="performance" name="performance"></textarea>
+            @error('performance')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary mb-4">Salva</button>
