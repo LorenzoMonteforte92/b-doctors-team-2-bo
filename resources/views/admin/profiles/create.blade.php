@@ -35,9 +35,6 @@
                     </label>
                 </span>
             @endforeach
-            @error('specialisations')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
         </div>
 
         <div class="mb-4">
