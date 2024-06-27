@@ -62,10 +62,14 @@ class ProfessionalProfileController extends Controller
             'performance' => 'nullable|string|min:10',
         ],
         [
+            'photo.mimes' => 'il file deve essere png, jpg o jpeg',
+            'photo.max' => 'il file non deve superare i 2mb', 
             'telephone_number.required' => 'Numero di telefono obbligatorio', 
             'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
+            'curriculum_vitae.mimes' => 'il file deve essere png, jpg o jpeg',
+            'curriculum_vitae.max' => 'il file non deve superare i 2mb',
+            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri',
             'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
-            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri'
         ]
      
     );
@@ -132,10 +136,14 @@ class ProfessionalProfileController extends Controller
 
         ],
         [
+            'photo.mimes' => 'il file deve essere png, jpg o jpeg',
+            'photo.max' => 'il file non deve superare i 2mb', 
             'telephone_number.required' => 'Numero di telefono obbligatorio', 
             'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
+            'curriculum_vitae.mimes' => 'il file deve essere png, jpg o jpeg',
+            'curriculum_vitae.max' => 'il file non deve superare i 2mb',
+            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri',
             'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
-            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri'
          ]
     );
             //Campi Imput per richiamare l'edit //
