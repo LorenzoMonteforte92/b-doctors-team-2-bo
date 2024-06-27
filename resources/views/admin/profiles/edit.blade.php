@@ -44,7 +44,7 @@
 
         <div class="mb-4 py-2">
             <label for="curriculum_vitae" class="form-label"><strong>Curriculum Vitae:</strong></label>
-            <input class="form-control @error('photo') is-invalid @enderror" type="file" id="curriculum_vitae" name="curriculum_vitae">
+            <input class="form-control @error('curriculum_vita') is-invalid @enderror" type="file" id="curriculum_vitae" name="curriculum_vitae">
             @error('photo')
                 <div class="invalid-feedback">immagine non valida</div>
             @enderror
