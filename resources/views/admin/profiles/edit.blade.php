@@ -30,8 +30,6 @@
                     <img src="{{ asset('storage/' . $profile->photo) }}" class="img-thumbnail" alt="{{ $profile->photo }}"
                         width="150">
                 </div>
-            @else
-                <small>Immagine non presente</small>
             @endif
         </div>
 
