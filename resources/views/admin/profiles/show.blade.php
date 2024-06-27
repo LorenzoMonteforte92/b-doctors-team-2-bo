@@ -2,6 +2,13 @@
 
 @section('content')
     <h2>IL TUO PROFILO</h2>
+
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <div class="profile-wrapper">
         @if ($profile->photo)
             <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}">
