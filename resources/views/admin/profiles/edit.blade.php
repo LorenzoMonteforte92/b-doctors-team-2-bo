@@ -63,7 +63,7 @@
 
         <div class="form-group py-2">
             <label for="performance">Prestazioni:</label>
-            <textarea class="form-control" rows="8" id="performance" name="performance">{{ old('performance', $profile->performance) }}</textarea>
+            <textarea class="form-control @error('performance') is-invalid @enderror " rows="8" id="performance" name="performance">{{ old('performance', $profile->performance) }}</textarea>
             @error('performance')
                 <div class="invalid-feedback">{{$error}}</div>
             @enderror
