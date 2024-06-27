@@ -54,12 +54,12 @@ class ProfessionalProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validate= $request->validate([
             'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'telephone_number' => 'required|string|max:15',
             'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
-            'bio' => 'nullable|string',
-            'performance' => 'nullable|string',
+            'bio' => 'nullable|string|min:10',
+            'performance' => 'nullable|string|min:10',
         ]);
         $profileData = $request->all();
 
@@ -113,12 +113,12 @@ class ProfessionalProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        $request->validate([
+        $validate = $request->validate([
             'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'telephone_number' => 'required|string|max:15',
             'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
-            'bio' => 'nullable|string',
-            'performance' => 'nullable|string',
+            'bio' => 'nullable|string|min:10',
+            'performance' => 'nullable|string|min:10',
             'visibility' => 'boolean'
 
         ]);

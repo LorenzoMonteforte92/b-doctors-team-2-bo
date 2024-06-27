@@ -20,17 +20,34 @@
 
         <div class="form-group py-2">
             <label for="photo">Foto Profilo:</label>
-            <input type="file" class="form-control" id="photo" name="photo" value="{{ old('photo', $profile->photo) }}">
+            <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" value="{{ old('photo', $profile->photo) }}">
+            @error('photo')
+                <div class="invalid-feedback">immagine non valida</div>
+            @enderror
+            @if ($profile->photo)
+                <div>
+                    <img src="{{ asset('storage/' . $profile->photo) }}" class="img-thumbnail" alt="{{ $profile->photo }}"
+                        width="150">
+                </div>
+            @else
+                <small>Immagine non presente</small>
+            @endif
         </div>
 
         <div class="form-group py-2">
             <label for="telephone_number">Numero di telefono:</label>
-            <input type="text" class="form-control" id="telephone_number" name="telephone_number" value="{{ old('telephone_number', $profile->telephone_number) }}">
+            <input type="text" class="form-control @error('telephone_number') is-invalid @enderror" id="telephone_number" name="telephone_number" value="{{ old('telephone_number', $profile->telephone_number) }}">
+            @error('telephone_number')
+                <div class="invalid-feedback">campo obbligatorio</div>
+            @enderror
         </div>
 
         <div class="mb-4 py-2">
             <label for="curriculum_vitae" class="form-label"><strong>Curriculum Vitae:</strong></label>
-            <input class="form-control" type="file" id="curriculum_vitae" name="curriculum_vitae">
+            <input class="form-control @error('photo') is-invalid @enderror" type="file" id="curriculum_vitae" name="curriculum_vitae">
+            @error('photo')
+                <div class="invalid-feedback">immagine non valida</div>
+            @enderror
             @if($profile->curriculum_vitae)
                 <a href="{{ asset('storage/' . $profile->curriculum_vitae) }}" target="_blank">Visualizza CV attuale</a>
             @endif
@@ -38,12 +55,18 @@
 
         <div class="form-group py-2">
             <label for="bio">Bio:</label>
-            <textarea class="form-control" rows="15" id="bio" name="bio">{{ old('bio', $profile->bio) }}</textarea>
+            <textarea class="form-control @error('bio') is-invalid @enderror" rows="8" id="bio" name="bio">{{ old('bio', $profile->bio) }}</textarea>
+            @error('bio')
+                <div class="invalid-feedback">bio non valida</div>
+            @enderror
         </div>
 
         <div class="form-group py-2">
             <label for="performance">Prestazioni:</label>
-            <textarea class="form-control" id="performance" name="performance">{{ old('performance', $profile->performance) }}</textarea>
+            <textarea class="form-control" rows="8" id="performance" name="performance">{{ old('performance', $profile->performance) }}</textarea>
+            @error('performance')
+                <div class="invalid-feedback">performance non valida</div>
+            @enderror
         </div>
 
         <div class="form-group py-2">
