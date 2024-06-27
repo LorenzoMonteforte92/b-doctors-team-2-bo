@@ -33,11 +33,13 @@
                     <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
                         {{ $specialisation->name }}
                     </label>
+                    @if ($loop->last)
+                    @error('specialisations')
+                        <div class=" ps-0 pt-2 invalid-feedback">{{$message}}</div>
+                    @enderror
+                    @endif
                 </span>
             @endforeach
-            @error('specialisations')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
         </div>
 
         <div class="mb-4">
