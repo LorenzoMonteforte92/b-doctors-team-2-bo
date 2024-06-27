@@ -60,7 +60,16 @@ class ProfessionalProfileController extends Controller
             'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'bio' => 'nullable|string|min:10',
             'performance' => 'nullable|string|min:10',
-        ]);
+        ],
+        [
+            'telephone_number.required' => 'Numero di telefono obbligatorio', 
+            'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
+            'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
+            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri'
+        ]
+     
+    );
+        
         $profileData = $request->all();
 
         if ($request->hasFile('photo')) {
@@ -121,7 +130,14 @@ class ProfessionalProfileController extends Controller
             'performance' => 'nullable|string|min:10',
             'visibility' => 'boolean'
 
-        ]);
+        ],
+        [
+            'telephone_number.required' => 'Numero di telefono obbligatorio', 
+            'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
+            'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
+            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri'
+         ]
+    );
             //Campi Imput per richiamare l'edit //
             // $profile->photo = $request->input('photo');
             // $profile->telephone_number = $request->input('telephone_number');

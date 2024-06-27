@@ -38,7 +38,7 @@
             <label for="telephone_number">Numero di telefono:</label>
             <input type="text" class="form-control @error('telephone_number') is-invalid @enderror" id="telephone_number" name="telephone_number" value="{{ old('telephone_number', $profile->telephone_number) }}">
             @error('telephone_number')
-                <div class="invalid-feedback">campo obbligatorio</div>
+                <div class="invalid-feedback">{{$error}}</div>
             @enderror
         </div>
 
@@ -57,7 +57,7 @@
             <label for="bio">Bio:</label>
             <textarea class="form-control @error('bio') is-invalid @enderror" rows="8" id="bio" name="bio">{{ old('bio', $profile->bio) }}</textarea>
             @error('bio')
-                <div class="invalid-feedback">bio non valida</div>
+                <div class="invalid-feedback">{{$error}}</div>
             @enderror
         </div>
 
@@ -65,7 +65,7 @@
             <label for="performance">Prestazioni:</label>
             <textarea class="form-control" rows="8" id="performance" name="performance">{{ old('performance', $profile->performance) }}</textarea>
             @error('performance')
-                <div class="invalid-feedback">performance non valida</div>
+                <div class="invalid-feedback">{{$error}}</div>
             @enderror
         </div>
 
