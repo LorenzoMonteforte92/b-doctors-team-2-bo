@@ -22,7 +22,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="specialisations" class="form-label"><strong>Specializzazioni</strong></label><br>
+            <label for="specialisations" class="form-label"><strong>Specializzazioni *</strong></label><br>
             @foreach ($specialisations as $specialisation)
                 <span class="form-check">
                     <input class="form-check-input @error('specialisations') is-invalid @enderror " @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox" value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
@@ -39,21 +39,21 @@
         </div>
 
         <div class="mb-4">
-            <label for="address" class="form-label"><strong>Indirizzo</strong></label>
+            <label for="address" class="form-label"><strong>Indirizzo *</strong></label>
             <input class="form-control @error('address') is-invalid @enderror " type="text" id="address" name="address"></input>
         </div>
 
         <div class="mb-4">
-            <label for="telephone_number" class="form-label"><strong>Telefono</strong></label>
+            <label for="telephone_number" class="form-label"><strong>Telefono *</strong></label>
             <input class="form-control @error('telephone_number') is-invalid @enderror " type="text" id="telephone_number" name="telephone_number"></input>
         </div>
         <div class="mb-4">
             <label for="bio" class="form-label"><strong>Bio</strong></label>
-            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="15" id="bio" name="bio"></textarea>
+            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="8" id="bio" name="bio"></textarea>
         </div>
         <div class="mb-4">
             <label for="performance" class="form-label"><strong>Prestazioni</strong></label>
-            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="15" id="performance" name="performance"></textarea>
+            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="8" id="performance" name="performance"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary mb-4">Salva</button>

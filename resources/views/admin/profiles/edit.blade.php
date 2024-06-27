@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group py-2">
-            <label for="telephone_number">Numero di telefono:</label>
+            <label for="telephone_number">Numero di telefono: *</label>
             <input type="text" class="form-control @error('telephone_number') is-invalid @enderror" id="telephone_number" name="telephone_number" value="{{ old('telephone_number', $profile->telephone_number) }}">
             @error('telephone_number')
                 <div class="invalid-feedback">{{ $error }}</div>
