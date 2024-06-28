@@ -90,6 +90,10 @@ class ProfessionalProfileController extends Controller
         $newProfile->fill($profileData);
         $newProfile->save();
 
+        if($request->has('specialisations')) {
+            $newProfile->specialisations()->attach($profileData['specialisations']);
+        };
+
         return redirect()->route('admin.profiles.show', ['profile' => $newProfile->id])->with('message','Nuovo profilo creato con successo');
 
     }
@@ -174,6 +178,12 @@ class ProfessionalProfileController extends Controller
         
     
             $profile->update($form);
+
+            if($request->has('specialisations')) {
+                $profile->specialisations()->sync($form['specialisations']);
+            } else {
+                $profile->specialisations()->detach();
+              };
     
         return redirect()->route('admin.profiles.show', ['profile' => $profile->id])->with('message', 'Profilo aggiornato con successo.');
     }
