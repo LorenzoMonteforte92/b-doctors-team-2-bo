@@ -60,9 +60,9 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <small class="password-error warning-message">Le password non coincidono</small>
                             </div>
                         </div>
-                        <div class="password-error warning-message my-3">Le password non coincidono</div>
 
 
                         <div class="mb-4 row">
@@ -70,9 +70,9 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="confirm-password form-control" name="password_confirmation" required autocomplete="new-password">
+                                <small class="password-error warning-message">Le password non coincidono</small>
                             </div>
                         </div>
-                        <div class="password-error warning-message my-3">Le password non coincidono</div>
 
                         {{-- Aggiungere campo per address --}}
                         <div class="mb-4 row">

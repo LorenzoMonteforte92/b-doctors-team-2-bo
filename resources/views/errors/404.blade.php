@@ -3,7 +3,7 @@
 
 <div class=" position-absolute top-50 start-50 translate-middle">
     <div class="d-flex">
-        <div class="me-3 mt-2">
+        <div class="me-4 mt-2">
             <i class="fa-regular fa-face-sad-tear fs-1"></i>
         </div>
         <div>
