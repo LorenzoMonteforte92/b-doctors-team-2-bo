@@ -40,6 +40,27 @@
             @enderror
         </div>
 
+        <div class="mb-4">
+            <label for="specialisations" class="form-label"><strong>Specializzazioni *</strong></label><br>
+            @foreach ($specialisations as $specialisation)
+                <span class="form-check">
+                    @if ($specialisations)
+                        <input class="form-check-input @error('specialisations') is-invalid @enderror " @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox" value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
+                    @else
+                        <input @checked($profile->specialisations->contains($specialisation)) class="form-check-input" type="checkbox" name="specialisations[]" value="{{ $specialisation->id }}" id="tech-{{ $specialisation->id }}">
+                    @endif
+                    <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
+                        {{ $specialisation->name }}
+                    </label>
+                    @if ($loop->last)
+                    @error('specialisations')
+                        <div class=" ps-0 pt-2 invalid-feedback">{{$message}}</div>
+                    @enderror
+                    @endif
+                </span>
+            @endforeach
+        </div>
+
         <div class="mb-4 py-2">
             <label for="curriculum_vitae" class="form-label brand-text-color-1"><strong>Curriculum Vitae:</strong></label>
             <input class="form-control @error('curriculum_vitae') is-invalid @enderror" type="file" id="curriculum_vitae" name="curriculum_vitae">
