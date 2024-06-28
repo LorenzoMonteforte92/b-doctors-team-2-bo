@@ -1,5 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 
-.field-required{
+.warning-message{
     color: red;
+}
+.password-error{
+    display: none;
 }
