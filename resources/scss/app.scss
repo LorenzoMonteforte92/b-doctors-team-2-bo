@@ -1,1 +1,8 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+.warning-message{
+    color: red;
+}
+.password-error{
+    display: none;
+}

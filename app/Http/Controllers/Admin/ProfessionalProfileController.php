@@ -32,7 +32,7 @@ class ProfessionalProfileController extends Controller
         $profiles = Profile::all();
         $user = Auth::user();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
+        return view('admin.profiles.index', 'layouts.admin', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }
 
     /**
@@ -190,6 +190,13 @@ class ProfessionalProfileController extends Controller
     public function destroy($id)
     {
         $profile = Profile::findOrFail($id);
+        
+        if ($profile->photo) {
+            Storage::delete($profile->photo);
+        }
+        if ($profile->curriculum_vitae) {
+            Storage::delete($profile->curriculum_vitae);
+        }
         $profile->delete();
 
         return redirect()->route('admin.profiles.index')->with('message', 'Profile successfully deleted.');

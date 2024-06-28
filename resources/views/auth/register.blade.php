@@ -2,15 +2,25 @@
 
 @section('content')
 <div class="container mt-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" id="registrationForm">
                         @csrf
 
+                        <small class="warning-message my-3">* campi sono obbligatori</small>
                         <div class="mb-4 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome e Cognome *') }}</label>
 
@@ -43,7 +53,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" value="{{old('password')}}" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="password form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -52,14 +62,18 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="password-error warning-message my-3">Le password non coincidono</div>
+
 
                         <div class="mb-4 row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="confirm-password form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <div class="password-error warning-message my-3">Le password non coincidono</div>
+
                         {{-- Aggiungere campo per address --}}
                         <div class="mb-4 row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo *') }}</label>

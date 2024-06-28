@@ -51,14 +51,6 @@
         </div>
 
         <div class="mb-4">
-            <label for="address" class="form-label"><strong>Indirizzo *</strong></label>
-            <input class="form-control @error('address') is-invalid @enderror " type="text" id="address" name="address"></input>
-            @error('address')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </div>
-
-        <div class="mb-4">
             <label for="telephone_number" class="form-label"><strong>Telefono *</strong></label>
             <input class="form-control @error('telephone_number') is-invalid @enderror " type="text" id="telephone_number" name="telephone_number"></input>
             @error('telephone_number')
