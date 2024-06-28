@@ -74,6 +74,6 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary mb-4">Salva</button>
+        <button type="submit" class="btn btn-bd-primary mb-4">Salva</button>
     </form>
 @endsection
