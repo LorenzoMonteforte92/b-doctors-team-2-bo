@@ -20,7 +20,7 @@
             <div><strong class="brand-text-color-1 ">CURRICULUM:</strong></div>
             <img src="{{ asset('storage/' . $profile->curriculum_vitae) }}" alt="{{ $profile->name }}">
         @endif
-        <div class="my-2 brand-text-color-1"><strong>SPECIALIZZAZIONI</strong>:
+        <div><strong class="my-2 brand-text-color-1">SPECIALIZZAZIONI</strong>:
             @if (count($profile->specialisations) > 0)
                 @foreach ($profile->specialisations as $specialisation)
                     {{ $specialisation->name }}@if (!$loop->last),@endif
