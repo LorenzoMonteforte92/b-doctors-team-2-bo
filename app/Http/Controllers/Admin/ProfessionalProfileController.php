@@ -111,7 +111,8 @@ class ProfessionalProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
         $user = Auth::user();
-        return view('admin.profiles.show', compact('profile', 'user'));
+        $specialisations = Specialisation::all();
+        return view('admin.profiles.show', compact('profile', 'user', 'specialisations'));
     }
 
     /**
@@ -122,7 +123,8 @@ class ProfessionalProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        return view('admin.profiles.edit', compact('profile'));
+        $specialisations = Specialisation::all();
+        return view('admin.profiles.edit', compact('profile', 'specialisations'));
     }
 
     /**

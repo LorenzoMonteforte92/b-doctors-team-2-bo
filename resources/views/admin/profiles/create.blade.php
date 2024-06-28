@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2 class="brand-text-color-1">Inserisci il tuo profilo</h2>
+    <h2 class="brand-text-color-1"><strong>Inserisci il tuo profilo</strong></h2>
 
 @if ($errors->any())
     <div class="alert alert-danger">

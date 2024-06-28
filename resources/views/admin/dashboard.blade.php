@@ -8,7 +8,7 @@
     <div class="row justify-content-center brand-text-color-1 ">
         <div class="col">
             <div class="card">
-                <div class="card-header brand-text-color-1 ">{{ __('User Dashboard') }}</div>
+                <div class="card-header">{{ __('User Dashboard') }}</div>
 
                 <div class="card-body brand-text-color-1 ">
                     @if (session('status'))
