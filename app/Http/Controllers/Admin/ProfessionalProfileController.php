@@ -130,6 +130,7 @@ class ProfessionalProfileController extends Controller
     {
         $specialisations = Specialisation::all();
         return view('admin.profiles.edit', compact('profile', 'specialisations'));
+       
     }
 
     /**
@@ -195,7 +196,7 @@ class ProfessionalProfileController extends Controller
                 $profile->specialisations()->detach();
               };
     
-        return redirect()->route('admin.profiles.show', ['profile' => $profile->id])->with('message', 'Profilo aggiornato con successo.');
+        return redirect()->route('admin.profiles.show', ['profile' => $profile->user_slug])->with('message', 'Profilo aggiornato con successo.');
     }
 
     /**
