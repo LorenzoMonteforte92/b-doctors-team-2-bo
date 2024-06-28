@@ -53,11 +53,11 @@
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.profiles.index') }}">
                                     <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>I tuoi messaggi
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.create' ? 'bg-secondary' : '' }}" href="{{ route('admin.profiles.create') }}">
                                     <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Crea profilo

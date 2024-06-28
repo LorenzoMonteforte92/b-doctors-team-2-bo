@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="container mt-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -11,6 +20,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <small class="field-required my-3">* campi sono obbligatori</small>
                         <div class="mb-4 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome e Cognome *') }}</label>
 
