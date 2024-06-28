@@ -3,7 +3,6 @@
 @section('content')
 <div class="container">
     <h2>Edita Profilo</h2>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             {{$errors}}

@@ -32,7 +32,7 @@ class ProfessionalProfileController extends Controller
         $profiles = Profile::all();
         $user = Auth::user();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
+        return view('admin.profiles.index', 'layouts.admin', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }
 
     /**
