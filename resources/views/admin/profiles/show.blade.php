@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>IL TUO PROFILO</h2>
+    <h2 class="brand-text-color-1">IL TUO PROFILO</h2>
 
     @if (session()->has('message'))
         <div class="alert alert-success">
@@ -13,19 +13,19 @@
         @if ($profile->photo)
             <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}">
         @endif
-        <div class="my-2"><strong>ID</strong>: {{ $profile->id }}</div>
-        <div class="my-2"><strong>EMAIL</strong>: {{ $user->email }}</div>
-        <div class="my-2"><strong>NOME</strong>: {{ $user->name }}</div>
-        <div class="my-2"><strong>INDIRIZZO</strong>: {{ $user->address }}</div>
-        <div class="my-2"><strong>TELEFONO</strong>: {{ $profile->telephone_number }}</div>
+        <div class="my-2"><strong class="brand-text-color-1 ">ID</strong>: {{ $profile->id }}</div>
+        <div class="my-2"><strong class="brand-text-color-1 ">EMAIL</strong>: {{ $user->email }}</div>
+        <div class="my-2"><strong class="brand-text-color-1 ">NOME</strong>: {{ $user->name }}</div>
+        <div class="my-2 "><strong class="brand-text-color-1 ">INDIRIZZO</strong>: {{ $user->address }}</div>
+        <div class="my-2 "><strong class="brand-text-color-1 ">TELEFONO</strong>: {{ $profile->telephone_number }}</div>
         @if ($profile->curriculum_vitae)
-            <div><strong>CURRICULUM:</strong></div>
+            <div><strong class="brand-text-color-1 ">CURRICULUM:</strong></div>
             <img src="{{ asset('storage/' . $profile->curriculum_vitae) }}" alt="{{ $profile->name }}">
         @endif
-        <div class="my-2"><strong>PRESTAZIONI</strong>: {{ $profile->performance }}</div>
-        <div class="my-2"><strong>BIO</strong>: {{ $profile->bio }}</div>
-        <button class="btn btn-dark mt-4">
-            <a href="{{ route('admin.profiles.edit', $profile->id) }}">Modifica profilo</a>
+        <div class="my-2"><strong class="brand-text-color-1 ">PRESTAZIONI:</strong> {{ $profile->performance }}</div>
+        <div class="my-2"><strong class="brand-text-color-1 ">BIO:</strong> {{ $profile->bio }}</div>
+        <button class="btn btn-bd-primary mb-4">
+            <a  class=" ms-link" href="{{ route('admin.profiles.edit', $profile->id) }}">Modifica profilo</a>
         </button>
     </div>
 @endsection
