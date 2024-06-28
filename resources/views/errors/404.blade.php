@@ -7,7 +7,7 @@
             <i class="fa-regular fa-hospital fs-1"></i>
         </div>
         <div>
-            <h2>4<i class="fa-solid fa-stethoscope fs-3"></i>4 - PAGE NOT FOUND</h2>
+            <h2>404 - PAGE NOT FOUND <i class="fa-solid fa-pills fs-3"></i></h2>
             <p>La pagina a cui cerchi di accedere è stata eliminata, ha un nome diverso o non è al momento disponibile</p>
             <a class="btn btn-primary" href="{{ route('admin.dashboard') }}">torna alla HomePage</a>
         </div>
