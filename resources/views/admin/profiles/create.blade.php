@@ -14,16 +14,7 @@
 @endif
 
     <form action="{{ route('admin.profiles.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        
-        <div class="mb-4">
-            <label for="curriculum_vitae" class="form-label"><strong>Curriculum</strong></label>
-            <input class="form-control @error('curriculum_vitae') is-invalid @enderror " type="file" id="curriculum_vitae" name="curriculum_vitae">
-            @error('curriculum_vitae')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </div>
-        
+        @csrf        
 
         <div class="mb-4">
             <label for="specialisations" class="form-label"><strong>Specializzazioni *</strong></label><br>
@@ -74,6 +65,14 @@
             @enderror
         </div>
 
+        <div class="mb-4">
+            <label for="curriculum_vitae" class="form-label"><strong>Curriculum</strong></label>
+            <input class="form-control @error('curriculum_vitae') is-invalid @enderror " type="file" id="curriculum_vitae" name="curriculum_vitae">
+            @error('curriculum_vitae')
+                <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+        </div>
+        
         <button type="submit" class="btn btn-bd-primary mb-4">Salva</button>
     </form>
 @endsection
