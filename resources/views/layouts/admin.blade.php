@@ -59,11 +59,13 @@
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.profiles.index') }}">
-                                    <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>I tuoi messaggi
-                                </a>
-                            </li> --}}
+                            @if (Auth::user()->profile)
+                                <li class="nav-item">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.profiles.index') }}">
+                                        <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>I tuoi messaggi
+                                    </a>
+                                </li>
+                            @endif
 
                             {{-- condizione se presente user()->profile mostra 'modifica profile' altrimenti mostra 'crea profilo'  --}}
                             @if (Auth::user()->profile)
