@@ -51,27 +51,6 @@
             @endif
         </div>
 
-        <div class="mb-4">
-            <label for="specialisations" class="form-label"><strong>Specializzazioni *</strong></label><br>
-            @foreach ($specialisations as $specialisation)
-                <span class="form-check">
-                    @if ($specialisations)
-                        <input class="form-check-input @error('specialisations') is-invalid @enderror " @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox" value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
-                    @else
-                        <input @checked($profile->specialisations->contains($specialisation)) class="form-check-input" type="checkbox" name="specialisations[]" value="{{ $specialisation->id }}" id="tech-{{ $specialisation->id }}">
-                    @endif
-                    <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
-                        {{ $specialisation->name }}
-                    </label>
-                    @if ($loop->last)
-                    @error('specialisations')
-                        <div class=" ps-0 pt-2 invalid-feedback">{{$message}}</div>
-                    @enderror
-                    @endif
-                </span>
-            @endforeach
-        </div>
-
         <div class="form-group py-2">
             <label for="bio">Bio:</label>
             <textarea class="form-control @error('bio') is-invalid @enderror" rows="8" id="bio" name="bio">{{ old('bio', $profile->bio) }}</textarea>
@@ -82,8 +61,7 @@
 
         <div class="form-group py-2">
             <label for="performance">Prestazioni:</label>
-            <textarea class="form-control @error('performance') is-invalid @enderror " rows="8" id="performance" name="performance">
-                {{ old('performance', $profile->performance) }}</textarea>
+            <textarea class="form-control @error('performance') is-invalid @enderror " rows="8" id="performance" name="performance">{{ old('performance', $profile->performance) }}</textarea>
             @error('performance')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
