@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
+    <h2 class="fs-4 my-4 brand-text-color-1 ">
         {{ __('Dashboard') }}
     </h2>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center brand-text-color-1 ">
         <div class="col">
             <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
+                <div class="card-header brand-text-color-1 ">{{ __('User Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="card-body brand-text-color-1 ">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}

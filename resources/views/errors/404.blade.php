@@ -4,10 +4,10 @@
 <div class=" position-absolute top-50 start-50 translate-middle">
     <div class="d-flex">
         <div class="me-4 mt-2">
-            <i class="fa-regular fa-face-sad-tear fs-1"></i>
+            <i class="fa-regular fa-hospital fs-1"></i>
         </div>
         <div>
-            <h2>404 - PAGE NOT FOUND</h2>
+            <h2>404 - PAGE NOT FOUND <i class="fa-solid fa-pills fs-3"></i></h2>
             <p>La pagina a cui cerchi di accedere è stata eliminata, ha un nome diverso o non è al momento disponibile</p>
             <a class="btn btn-primary" href="{{ route('admin.dashboard') }}">torna alla HomePage</a>
         </div>
