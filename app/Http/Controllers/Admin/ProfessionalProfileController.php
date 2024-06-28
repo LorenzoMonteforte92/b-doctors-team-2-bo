@@ -111,7 +111,7 @@ class ProfessionalProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile, Auth $auth)
+    public function show(Profile $profile)
     {
         $user = Auth::user();
         $specialisations = Specialisation::all();
