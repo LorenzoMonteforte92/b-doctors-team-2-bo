@@ -20,7 +20,7 @@
                     <form method="POST" action="{{ route('register') }}" id="registrationForm">
                         @csrf
 
-                        <small class="warning-message my-3">* campi sono obbligatori</small>
+                        <small class="warning-message my-3">* campi obbligatori</small>
                         <div class="mb-4 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome e Cognome *') }}</label>
 

@@ -10,10 +10,10 @@
     @endif
 
     <div class="profile-wrapper">
+        {{ dd($profile)}}
         @if ($profile->photo)
             <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}">
         @endif
-        <div class="my-2"><strong>ID</strong>: {{ $profile->id }}</div>
         <div class="my-2"><strong>EMAIL</strong>: {{ $user->email }}</div>
         <div class="my-2"><strong>NOME</strong>: {{ $user->name }}</div>
         <div class="my-2"><strong>INDIRIZZO</strong>: {{ $user->address }}</div>
@@ -22,6 +22,7 @@
             <div><strong>CURRICULUM:</strong></div>
             <img src="{{ asset('storage/' . $profile->curriculum_vitae) }}" alt="{{ $profile->name }}">
         @endif
+        <div class="my-2"><strong>SPECIALIZZAIONI</strong>: {{ $profile->specialisations }}</div>
         <div class="my-2"><strong>PRESTAZIONI</strong>: {{ $profile->performance }}</div>
         <div class="my-2"><strong>BIO</strong>: {{ $profile->bio }}</div>
         <button class="btn btn-dark mt-4">
