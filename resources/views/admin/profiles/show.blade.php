@@ -30,8 +30,5 @@
         </div>
         <div class="my-2"><strong class="brand-text-color-1">PRESTAZIONI</strong>: {{ $profile->performance }}</div>
         <div class="my-2"><strong class="brand-text-color-1">BIO</strong>: {{ $profile->bio }}</div>
-        <button class="btn btn-bd-primary  mt-4">
-            <a class=" ms-link" href="{{ route('admin.profiles.edit', $profile->id) }}">Modifica profilo</a>
-        </button>
     </div>
 @endsection
