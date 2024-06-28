@@ -5,11 +5,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Review;
-use App\Models\User;
-use App\Models\Message;
-use App\Models\Specialisation;
-use App\Models\Sponsorship;
+
 
 class Profile extends Model
 {
