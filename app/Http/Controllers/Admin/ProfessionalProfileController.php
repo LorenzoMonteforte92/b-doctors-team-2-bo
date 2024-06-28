@@ -12,7 +12,6 @@ use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
