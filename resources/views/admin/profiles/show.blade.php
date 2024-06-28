@@ -21,17 +21,17 @@
             <div><strong class="brand-text-color-1 ">CURRICULUM:</strong></div>
             <img src="{{ asset('storage/' . $profile->curriculum_vitae) }}" alt="{{ $profile->name }}">
         @endif
-        <div class="my-2"><strong>SPECIALIZZAZIONI</strong>:
+        <div class="my-2 brand-text-color-1"><strong>SPECIALIZZAZIONI</strong>:
             @if (count($profile->specialisations) > 0)
                 @foreach ($profile->specialisations as $specialisation)
                     {{ $specialisation->name }}@if (!$loop->last),@endif
                 @endforeach
             @endif
         </div>
-        <div class="my-2"><strong>PRESTAZIONI</strong>: {{ $profile->performance }}</div>
-        <div class="my-2"><strong>BIO</strong>: {{ $profile->bio }}</div>
-        <button class="btn btn-dark mt-4">
-            <a href="{{ route('admin.profiles.edit', $profile->id) }}">Modifica profilo</a>
+        <div class="my-2"><strong class="brand-text-color-1">PRESTAZIONI</strong>: {{ $profile->performance }}</div>
+        <div class="my-2"><strong class="brand-text-color-1">BIO</strong>: {{ $profile->bio }}</div>
+        <button class="btn btn-bd-primary  mt-4">
+            <a class=" ms-link" href="{{ route('admin.profiles.edit', $profile->id) }}">Modifica profilo</a>
         </button>
     </div>
 @endsection
