@@ -26,7 +26,7 @@
 <body>
     <div id="app">
 
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+        <header class="navbar navbar-dark sticky-top brand-color-1 flex-md-nowrap p-2">
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-2" href="/">BD<i
                     class="fa-solid fa-stethoscope"></i>ctors</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
@@ -50,11 +50,11 @@
         </header>
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block brand-color-1 navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.dashboard' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.dashboard' ? 'brand-color-2' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
@@ -69,7 +69,7 @@
                             @if (Auth::user()->profile)
                                 {{-- mostra il profilo di user()->profile usando admin.profiles.show --}}
                                 <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.show' ? 'bg-secondary' : '' }}"
+                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.show' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile]) }}">
                                         <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
                                         <span
@@ -77,14 +77,14 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'bg-secondary' : '' }}"
+                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile]) }}">
                                         <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
                                     </a>
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.create' ? 'bg-secondary' : '' }}"
+                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.create' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.create') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Crea profilo
                                     </a>

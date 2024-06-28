@@ -25,9 +25,9 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light brand-color-1 shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex align-items-center text-light href="{{ url('/') }}">
                     <div class="logo_laravel">
                         <h1>BD<i class="fa-solid fa-stethoscope"></i>ctors</h1>
                     </div>
@@ -40,10 +40,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
-                        </li>
+                    <ul class="navbar-nav me-auto">                     
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -51,21 +48,21 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                            <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                         </li>
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown text-light" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('admin/dashboard') }}">{{__('Dashboard')}}</a>
+                                <a class="dropdown-item " href="{{ url('admin/dashboard') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
