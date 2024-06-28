@@ -44,10 +44,10 @@
             <label for="specialisations" class="form-label"><strong>Specializzazioni *</strong></label><br>
             @foreach ($specialisations as $specialisation)
                 <span class="form-check">
-                    @if ($specialisations)
+                    @if ($errors->any())
                         <input class="form-check-input @error('specialisations') is-invalid @enderror " @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox" value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
                     @else
-                        <input @checked($profile->specialisations->contains($specialisation)) class="form-check-input" type="checkbox" name="specialisations[]" value="{{ $specialisation->id }}" id="tech-{{ $specialisation->id }}">
+                        <input @checked($profile->specialisations->contains($specialisation)) class="form-check-input" type="checkbox" name="specialisations[]" value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
                     @endif
                     <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
                         {{ $specialisation->name }}

@@ -19,7 +19,7 @@
 }
 
 .brand-text-color-1 {
-    color: #70c3a5;
+    color: #70c3a5 !important;
 }
 
 .nav-link {
@@ -33,4 +33,8 @@
 
 .my-d {
     text-shadow: 2px 2px 4px rgba(var(--bd-violet-rgb), 0.5); 
+  }
+
+  .testo {
+    color: blueviolet;
   }
