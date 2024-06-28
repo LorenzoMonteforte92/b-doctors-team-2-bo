@@ -8,9 +8,7 @@
             {{ session('message') }}
         </div>
     @endif
-
     <div class="profile-wrapper">
-        {{ dd($profile)}}
         @if ($profile->photo)
             <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}">
         @endif

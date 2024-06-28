@@ -86,16 +86,20 @@ class ProfessionalProfileController extends Controller
             $img_path = Storage::disk('public')->put('projects_images', $profileData['curriculum_vitae']);
             $profileData['curriculum_vitae'] = $img_path;
         }
-        
-        $newProfile = new Profile();
+
+        $userId = Auth::user()->id;
+
+        $newProfile = new Profile([
+            'user_id' => Auth::id(),
+        ]);
+
         $newProfile->fill($profileData);
         $newProfile->save();
 
         if($request->has('specialisations')) {
             $newProfile->specialisations()->attach($profileData['specialisations']);
         };
-
-       
+ 
 
         return redirect()->route('admin.profiles.show', ['profile' => $newProfile->id])->with('message','Nuovo profilo creato con successo');
 
