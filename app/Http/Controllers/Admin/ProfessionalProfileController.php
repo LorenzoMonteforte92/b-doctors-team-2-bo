@@ -12,7 +12,6 @@ use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -57,7 +56,6 @@ class ProfessionalProfileController extends Controller
         $validate= $request->validate([
             'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'telephone_number' => 'required|string|max:15',
-            'address' => 'required',
             'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
             'specialisations' => 'required',
             'bio' => 'nullable|string|min:10',
@@ -68,7 +66,6 @@ class ProfessionalProfileController extends Controller
             'photo.max' => 'il file non deve superare i 2mb', 
             'telephone_number.required' => 'Numero di telefono obbligatorio', 
             'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
-            'address' => 'indirizzo obbligatorio',
             'curriculum_vitae.mimes' => 'il file deve essere png, jpg o jpeg',
             'curriculum_vitae.max' => 'il file non deve superare i 2mb',
             'specialisations.required' => 'devi selezionare almeno una specializzazione',
