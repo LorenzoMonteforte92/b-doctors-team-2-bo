@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('telephone_number');
             $table->string('curriculum_vitae')->nullable();
-            $table->text('performance');
+            $table->text('performance')->nullable();
             $table->text('bio')->nullable();
             $table->boolean('visibility')->default(true);
             $table->timestamps();

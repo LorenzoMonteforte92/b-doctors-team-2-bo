@@ -1,7 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 
-
-
 $bd-purple:        #70c3a5;
 $bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
@@ -9,6 +7,9 @@ $bd-accent:        #ffe484;
 
 $bd-gutter-x: 3rem;
 $bd-callout-variants: info, warning, danger !default;
+
+$bd-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); // Ombra di testo standard
+$bd-text-shadow-violet: 2px 2px 4px rgba($bd-violet, 0.5); // Ombra di testo utilizzando $bd-violet
 
 :root,
 [data-bs-theme="light"] {
@@ -25,6 +26,8 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-callout-link: #{to-rgb($blue-600)};
   --bd-callout-code-color: #{$pink-600};
   --bd-pre-bg: var(--bs-tertiary-bg);
+  --bd-text-shadow: #{$bd-text-shadow}; // Aggiunta ombra di testo
+  --bd-text-shadow-violet: #{$bd-text-shadow-violet}; // Aggiunta ombra di testo violet
 }
 
 @include color-mode(dark, true) {
@@ -34,5 +37,11 @@ $bd-callout-variants: info, warning, danger !default;
   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
   --bd-callout-link: #{to-rgb($blue-300)};
   --bd-callout-code-color: #{$pink-300};
-  --bd-pre-bg: #{adjust-color($gray-900, $lightness: -2.5%)}; 
+  --bd-pre-bg: #{adjust-color($gray-900, $lightness: -2.5%)};
+  --bd-text-shadow: #{$bd-text-shadow}; // Aggiunta ombra di testo
+  --bd-text-shadow-violet: #{$bd-text-shadow-violet}; // Aggiunta ombra di testo violet
+}
+
+.my-custom-button {
+  text-shadow: var(--bd-text-shadow-violet);
 }

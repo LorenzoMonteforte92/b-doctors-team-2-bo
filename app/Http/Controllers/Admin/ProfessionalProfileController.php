@@ -12,6 +12,7 @@ use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -93,6 +94,8 @@ class ProfessionalProfileController extends Controller
         if($request->has('specialisations')) {
             $newProfile->specialisations()->attach($profileData['specialisations']);
         };
+
+       
 
         return redirect()->route('admin.profiles.show', ['profile' => $newProfile->id])->with('message','Nuovo profilo creato con successo');
 
