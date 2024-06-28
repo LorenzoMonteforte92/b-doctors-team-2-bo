@@ -91,6 +91,7 @@ class ProfessionalProfileController extends Controller
 
         $newProfile = new Profile([
             'user_id' => Auth::id(),
+            'user_slug' => Auth::user()->slug,
         ]);
 
         $newProfile->fill($profileData);
@@ -101,7 +102,7 @@ class ProfessionalProfileController extends Controller
         };
  
 
-        return redirect()->route('admin.profiles.show', ['profile' => $newProfile->id])->with('message','Nuovo profilo creato con successo');
+        return redirect()->route('admin.profiles.show', ['profile' => $newProfile->user_slug])->with('message','Nuovo profilo creato con successo');
 
     }
 
