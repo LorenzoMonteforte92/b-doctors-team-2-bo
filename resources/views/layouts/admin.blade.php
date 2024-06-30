@@ -70,15 +70,15 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.show' ? 'brand-color-2' : '' }}"
-                                        href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile]) }}">
+                                        href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile->user_slug]) }}">
                                         <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
                                         <span
-                                            class="badge bg-primary rounded-pill">{{ Auth::user()->profile->name }}</span>
+                                            class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
-                                        href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile]) }}">
+                                        href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
                                         <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
                                     </a>
                                 </li>
