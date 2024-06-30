@@ -114,6 +114,9 @@ class ProfessionalProfileController extends Controller
      */
     public function show(Profile $profile)
     {
+        if ($profile->user_id!== auth()->id()) {
+            abort(403, 'You do not have permission to access this profile');
+        }
         $user = Auth::user();
         $specialisations = Specialisation::all();
 
@@ -128,6 +131,9 @@ class ProfessionalProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
+        if ($profile->user_id!== auth()->id()) {
+            abort(403, 'You do not have permission to access this profile');
+        }
         $specialisations = Specialisation::all();
         return view('admin.profiles.edit', compact('profile', 'specialisations'));
        
