@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/profiles', [ProfessionalProfileController::class, 'index']);
 Route::get('profiles/{slug}', [ProfessionalProfileController::class, 'show']);
 Route::get('/specialisations', [SpecialisationController::class, 'index']);
+Route::get('/specialisations/{slug}', [SpecialisationController::class, 'index']);
 Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/messages', [UserMessageController::class, 'store']);
 Route::post('/ratings', [RatingController::class, 'store']);
