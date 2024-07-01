@@ -2,12 +2,12 @@
 
 @section('content')
 
-    <h1>RECENSIONI RICEVUTE</h1>
-    <table class="table table-bordered border-primary align-middle">
+    <h1 class="brand-text-color-1">Recensioni Ricevute</h1>
+    <table class="table table-bordered brand-color-2-border  align-middle">
         <thead>
-            <th class="text-center">Nome utente</th>
-            <th class="text-center">Descrizione</th>
-            <th class="text-center">Valutazione</th>
+            <th class="text-center brand-text-color-1">Nome utente</th>
+            <th class="text-center brand-text-color-1">Descrizione</th>
+            <th class="text-center brand-text-color-1">Valutazione</th>
         </thead>
         <tbody>
             @foreach ($reviews as $review)
@@ -19,13 +19,13 @@
             @endforeach
         </tbody>
     </table>
-    <h1>MESSAGGI RICEVUTI</h1>
-    <table class="table table-bordered border-primary align-middle">
+    <h1 class="brand-text-color-1">Messaggi Ricevuti</h1>
+    <table class="table table-bordered brand-color-2-border align-middle">
         <thead>
-            <th class="text-center">Nome utente</th>
-            <th class="text-center">Descrizione</th>
-            <th class="text-center">Email</th>
-            <th class="text-center">Data</th>
+            <th class="text-center brand-text-color-1">Nome utente</th>
+            <th class="text-center brand-text-color-1">Descrizione</th>
+            <th class="text-center brand-text-color-1">Email</th>
+            <th class="text-center brand-text-color-1">Data</th>
         </thead>
         <tbody>
             @foreach ($messages as $message)
