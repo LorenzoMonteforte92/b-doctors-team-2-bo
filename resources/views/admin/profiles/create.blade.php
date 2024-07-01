@@ -34,7 +34,7 @@
 
         <div class="mb-4">
             <label for="photo" class="form-label brand-text-color-1"><strong>Fotografia</strong></label>
-            <input class="form-control @error('photo') is-invalid @enderror " type="file" id="photo" name="photo">
+            <input class="form-control @error('photo') is-invalid @enderror " type="file" id="photo" name="photo" value="{{ old('photo') }}">
             @error('photo')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -42,7 +42,7 @@
 
         <div class="mb-4">
             <label for="telephone_number" class="form-label brand-text-color-1"><strong>Telefono *</strong></label>
-            <input class="form-control @error('telephone_number') is-invalid @enderror " type="text" id="telephone_number" name="telephone_number"></input>
+            <input class="form-control @error('telephone_number') is-invalid @enderror " type="text" id="telephone_number" name="telephone_number" value="{{ old('telephone_number') }}"></input>
             @error('telephone_number')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -50,7 +50,7 @@
 
         <div class="mb-4">
             <label for="bio" class="form-label brand-text-color-1"><strong>Bio</strong></label>
-            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="8" id="bio" name="bio"></textarea>
+            <textarea class="form-control @error ('bio') is-invalid @enderror " rows="8" id="bio" name="bio">{{ old('bio') }}</textarea>
             @error('bio')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -58,7 +58,7 @@
 
         <div class="mb-4">
             <label for="performance" class="form-label brand-text-color-1"><strong>Prestazioni</strong></label>
-            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="8" id="performance" name="performance"></textarea>
+            <textarea class="form-control @error ('performance') is-invalid @enderror " rows="8" id="performance" name="performance">{{ old('performance') }}</textarea>
             @error('performance')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -66,7 +66,7 @@
 
         <div class="mb-4">
             <label for="curriculum_vitae" class="form-label brand-text-color-1"><strong>Curriculum</strong></label>
-            <input class="form-control @error('curriculum_vitae') is-invalid @enderror " type="file" id="curriculum_vitae" name="curriculum_vitae">
+            <input class="form-control @error('curriculum_vitae') is-invalid @enderror " type="file" id="curriculum_vitae" name="curriculum_vitae" value="{{ old('curriculum_vitae') }}">
             @error('curriculum_vitae')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
