@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
+        Schema::table('user_messages', function (Blueprint $table) {
             $table->unsignedBigInteger('profile_id')->nullable()->after('id');
 
             $table->foreign('profile_id')
@@ -30,8 +30,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->dropForeign('messages_profile_id_foreign');
+        Schema::table('user_messages', function (Blueprint $table) {
+            $table->dropForeign('user_messages_profile_id_foreign');
             $table->dropColumn('profile_id');
         });
     }

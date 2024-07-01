@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserMessage extends Model
 {
     use HasFactory;
+
+    public function profiles(){
+        return $this->hasMany(Profile::class);
+    }
 }
