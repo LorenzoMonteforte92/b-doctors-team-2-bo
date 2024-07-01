@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SpecialisationController;
 use App\Http\Controllers\Api\ProfessionalProfileController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\UserMessageController;
 
 
 
@@ -27,5 +28,7 @@ Route::get('/profiles', [ProfessionalProfileController::class, 'index']);
 Route::get('profiles/{slug}', [ProfessionalProfileController::class, 'show']);
 Route::get('/specialisations', [SpecialisationController::class, 'index']);
 Route::post('/reviews', [ReviewController::class, 'store']);
+Route::post('/messages', [UserMessageController::class, 'store']);
+
 
 
