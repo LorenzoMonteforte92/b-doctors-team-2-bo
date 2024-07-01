@@ -12,7 +12,6 @@ use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Specialisation;
 use App\Models\Profile;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,7 +31,7 @@ class ProfessionalProfileController extends Controller
         $profiles = Profile::all();
         $user = Auth::user();
 
-        return view('admin.profiles.index', 'layouts.admin', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }
 
     /**
