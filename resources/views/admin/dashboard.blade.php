@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+
     <h2 class="fs-4 my-4 brand-text-color-1 ">
         {{ __('Dashboard') }}
     </h2>
@@ -26,5 +26,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
