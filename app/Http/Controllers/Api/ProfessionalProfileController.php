@@ -38,8 +38,8 @@ class ProfessionalProfileController extends Controller
         return response()->json($apiData);
     }
 
-    public function showBySpec($slug){
-       
+    public function showBySpec($slug){ 
+
 
         $profile = DB::table('profile_specialisation')
                    ->join('profiles', 'profile_specialisation.profile_id','=', 'profiles.id')
