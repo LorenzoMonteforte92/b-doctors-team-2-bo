@@ -5,6 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class ProfilesTableSeeder extends Seeder
 {
@@ -105,6 +108,7 @@ class ProfilesTableSeeder extends Seeder
             $newProfile->telephone_number = $singleProfile['telephone_number'];
             $newProfile->performance = $singleProfile['performance'];
             $newProfile->bio = $singleProfile['bio'];
+            $newProfile->user_slug = Auth::User()->slug;
             $newProfile->save();
         }
     }
