@@ -63,7 +63,7 @@
                             @if (Auth::user()->profile)
                                 {{-- mostra il profilo di user()->profile usando admin.profiles.show --}}
                                 <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.profiles.index') }}">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.index' ? 'brand-color-2' : '' }}" href="{{ route('admin.profiles.index') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>I tuoi messaggi
                                     </a>
                                 </li>
