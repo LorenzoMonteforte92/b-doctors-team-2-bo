@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\ProfessionalProfileController;
+use App\Http\Controllers\Api\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/profiles', [ProfessionalProfileController::class, 'index']);
+Route::get('profiles/{slug}', [ProfessionalProfileController::class, 'show']);
+// Route::post('/messages', MessageController::class, 'store');
