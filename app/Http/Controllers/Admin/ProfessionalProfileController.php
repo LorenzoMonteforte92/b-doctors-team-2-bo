@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Models\Review;
 use App\Models\Rating;
-use App\Models\Message;
+use App\Models\UserMessage;
 use App\Models\Specialisation;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +27,7 @@ class ProfessionalProfileController extends Controller
     {
         $reviews = Review::all();
         $ratings = Rating::all();
-        $messages = Message::all();
+        $messages = UserMessage::all();
         $profiles = Profile::all();
         $user = Auth::user();
 

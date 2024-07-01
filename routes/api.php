@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\SpecialisationController;
 use App\Http\Controllers\Api\ProfessionalProfileController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\UserMessageController;
+use App\Http\Controllers\Api\RatingController;
 
 
 
@@ -29,6 +30,7 @@ Route::get('profiles/{slug}', [ProfessionalProfileController::class, 'show']);
 Route::get('/specialisations', [SpecialisationController::class, 'index']);
 Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/messages', [UserMessageController::class, 'store']);
+Route::post('/ratings', [RatingController::class, 'store']);
 
 
 
