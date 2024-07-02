@@ -46,7 +46,7 @@
                 @foreach ($messages as $message)
                     <tr>
                         <td>{{ $message->name }}</td>
-                        <td>{{ $message->description }}</td>
+                        <td>{{ $message->message }}</td>
                         <td>{{ $message->email }}</td>
                         <td>{{ $message->date }}</td>
                     </tr>
