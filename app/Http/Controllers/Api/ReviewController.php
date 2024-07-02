@@ -15,7 +15,7 @@ class ReviewController extends Controller
 
         // validazione name e description
         $validator = Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'string|max:255',
             'description' => 'required|string|max:255',
         ],
         [
