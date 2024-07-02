@@ -29,11 +29,23 @@ class UserMessageController extends Controller
             'message.required' => 'Inserisci qui il tuo messaggio'
         ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
+
         // salvataggio dati nel DB
         $newMessage = new UserMessage();
         $newMessage->fill($data);
         $newMessage->date = Carbon::now();
+        $newMessage->save();
 
-       dd($data);
+       
+
+       return response()->json([
+            'success' => true
+        ]);
     }
 }
