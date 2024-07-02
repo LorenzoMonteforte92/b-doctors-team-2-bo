@@ -59,9 +59,7 @@
                                         href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile->user_slug]) }}">
                                         {{-- immagine che mostra la photo in formato thumbnail --}}
                                         <img src="{{ asset('storage/' . Auth::user()->profile->photo) }}"
-                                            alt="{{ Auth::user()->profile->user_slug }}" class="rounded-circle mb-2"
-                                            width=100 class="rounded-circle">
-
+                                            alt="{{ Auth::user()->profile->user_slug }}" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
                                     </a>
                                     {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
