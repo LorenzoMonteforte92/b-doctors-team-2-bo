@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title') {{'Crea Profilo'}} @endsection
 @section('content')
     <h2 class="brand-text-color-1"><strong>Inserisci il tuo profilo</strong></h2>
 @if ($errors->any())
