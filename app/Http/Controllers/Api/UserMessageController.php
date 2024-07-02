@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserMessage;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class UserMessageController extends Controller
@@ -24,12 +25,14 @@ class UserMessageController extends Controller
             'accepted_tc.accepted' => 'You must accept terms and conditions',
             'name.required' =>  'Inserisci nome e cognome',
             'email.required' =>  'Email obbligatoria',
-            'object.required' =>  'Inserisci l\'oggetto della richiesta'
+            'object.required' =>  'Inserisci l\'oggetto della richiesta',
+            'message.required' => 'Inserisci qui il tuo messaggio'
         ]);
 
         // salvataggio dati nel DB
         $newMessage = new UserMessage();
         $newMessage->fill($data);
+        $newMessage->date = Carbon::now();
 
        dd($data);
     }
