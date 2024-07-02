@@ -19,7 +19,6 @@ class ReviewController extends Controller
             'description' => 'required|string|max:255',
         ],
         [
-            'name.required' => 'Il campo nome è obbligatorio',
             'description.required' => 'Il campo descrizione è obbligatorio',
         ]);
 
@@ -36,8 +35,8 @@ class ReviewController extends Controller
         
         
         return response()->json([
-            'message' => 'Review created successfully',
-            'data' => $review], 201);
+            'success' => true,
+            ]);
 
     }
 }
