@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') {{Auth::user()->name}} @endsection
 
 @section('content')
 
@@ -20,7 +21,7 @@
                     {{ __('You are logged in!') }}
 
                     <div>
-                        Benvenuto: {{ $user->name }}.
+                        Benvenuto: {{ Auth::user()->name }}.
                     </div>
                 </div>
             </div>

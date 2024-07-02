@@ -1,7 +1,8 @@
 @extends('layouts.admin')
+@section('title') {{'Interazioni'}} @endsection
+
 
 @section('content')
-
     <h1 class="brand-text-color-1">Recensioni Ricevute</h1>
     <table class="table table-bordered brand-color-2-border  align-middle">
         <thead>

@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') {{'Profilo di ' . Auth::user()->name}} @endsection
 
 @section('content')
 
