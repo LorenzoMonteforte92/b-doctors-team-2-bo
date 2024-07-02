@@ -33,10 +33,13 @@ class ReviewController extends Controller
         $review->fill($data);
         $review->save();
         
-        
+       
+
         return response()->json([
             'success' => true,
             ]);
+
+            dd($data);
 
     }
 }
