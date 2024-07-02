@@ -27,7 +27,8 @@
     <div id="app">
 
         <header class="navbar navbar-dark sticky-top brand-color-1 flex-md-nowrap p-2 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-2" href="/">BD<i class="fa-solid fa-stethoscope"></i>ctors</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-2" href="/">BD<i
+                    class="fa-solid fa-stethoscope"></i>ctors</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                 data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +53,28 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block brand-color-1 navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
+                            @if (Auth::user()->profile)
+                                <li class="nav-item">
+                                    <a class="nav-link text-white rounded-3 d-flex flex-column align-items-center {{ Route::currentRouteName() === 'admin.profiles.show' ? '' : '' }}"
+                                        href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile->user_slug]) }}">
+                                        {{-- immagine che mostra la photo in formato thumbnail --}}
+                                        <img src="{{ asset('storage/' . Auth::user()->profile->photo) }}"
+                                            alt="{{ Auth::user()->profile->user_slug }}" class="rounded-circle mb-2"
+                                            width=100 class="rounded-circle">
+
+                                        <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
+                                    </a>
+                                    {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
+                                    @if (Auth::user()->profile->visibility == 0)
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Attenzione!</strong> Il tuo profilo è nascosto.
+                                            {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
+                                        </div>
+                                    @endif
+                                </li>
+                            @endif
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.dashboard' ? 'brand-color-2' : '' }}"
+                                <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.dashboard' ? 'brand-color-2' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
@@ -63,27 +84,21 @@
                             @if (Auth::user()->profile)
                                 {{-- mostra il profilo di user()->profile usando admin.profiles.show --}}
                                 <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.index' ? 'brand-color-2' : '' }}" href="{{ route('admin.profiles.index') }}">
+                                    <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.index' ? 'brand-color-2' : '' }}"
+                                        href="{{ route('admin.profiles.index') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>I tuoi messaggi
                                     </a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.show' ? 'brand-color-2' : '' }}"
-                                        href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile->user_slug]) }}">
-                                        <i class="fa-solid fa-user fa-lg fa-fw"></i> Profilo
-                                        <span
-                                            class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
+                                    <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
                                         <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
                                     </a>
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.profiles.create' ? 'brand-color-2' : '' }}"
+                                    <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.create' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.create') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Crea profilo
                                     </a>
