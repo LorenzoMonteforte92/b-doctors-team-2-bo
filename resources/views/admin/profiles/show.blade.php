@@ -6,14 +6,13 @@
     <h2 class="brand-text-color-1">Il tuo profilo</h2>
 
     {{-- condizione che se la visibility è su '0' mostra: 'è nascosto a tutti' altrimenti 'è visibile a tutti' --}}
-    @if ($user->visibility == 0)
+    @if ($profile->visibility == 0)
         <div class="alert alert-danger" role="alert">
             <i class="fa fa-exclamation-triangle"></i> Il tuo profilo è nascosto a tutti.
         </div>
     @else
         <div class="alert alert-success" role="alert">
-            <i class="fa fa-check-circle"></i> Il tuo profilo è visibile a
-            tutti.
+            <i class="fa fa-check-circle"></i> Il tuo profilo è visibile a tutti.
         </div>
     @endif
 

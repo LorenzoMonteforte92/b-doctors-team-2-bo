@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('title') {{'Modifica Profilo'}} @endsection
+@section('title')
+    {{ 'Modifica Profilo' }}
+@endsection
 
 @section('content')
 
@@ -21,15 +23,11 @@
 
         <div class="form-group py-2">
             <label for="visibility" class="brand-text-color-1"><strong>Visibilità:</strong></label>
-            {{-- edita la visibilità --}}
-            <select class="form-select @error('visibility') is-invalid @enderror" id="visibility" name="visibility"
-                aria-label="Default select example">
-                <option value="0" @selected(old('visibility', $profile->visibility) == 0)>Nascondi profilo</option>
-                <option value="1" @selected(old('visibility', $profile->visibility) == 1)>Mostra profilo</option>
+            {{-- edita la visibilità, seleziona di default il valore attivo --}}
+            <select name="visibility" id="visibility" class="form-control" required>
+                <option value="1" {{ $profile->visibility == 1 ? 'selected' : '' }}>Visibile</option>
+                <option value="0" {{ $profile->visibility == 0 ? 'selected' : '' }}>Nascosto</option>
             </select>
-            @error('visibility')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
         </div>
         <div class="form-group py-2">
             <label for="photo" class="brand-text-color-1"><strong>Foto Profilo:</strong></label>
