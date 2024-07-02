@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class ProfessionalProfileController extends Controller
 {
     public function index(){
-        $profiles = Profile::with('user','specialisations')->paginate(5);
+        $profiles = Profile::with('user','specialisations')->paginate(10);
 
         // ->paginate(10)
 
