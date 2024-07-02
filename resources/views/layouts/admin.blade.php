@@ -58,8 +58,14 @@
                                     <a class="nav-link text-white rounded-3 d-flex flex-column align-items-center {{ Route::currentRouteName() === 'admin.profiles.show' ? '' : '' }}"
                                         href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile->user_slug]) }}">
                                         {{-- immagine che mostra la photo in formato thumbnail --}}
-                                        <img src="{{ asset('storage/' . Auth::user()->profile->photo) }}"
-                                            alt="{{ Auth::user()->profile->user_slug }}" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
+                                        {{-- se presente photo, mostra la photo, altrimenti ne mette una di default --}}
+                                        @if (Auth::user()->profile->photo)
+                                            <img src="{{ asset('storage/' . Auth::user()->profile->photo) }}"
+                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
+                                        @else
+                                            <img src="{{ asset('img/default.png') }}" 
+                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
+                                        @endif
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
                                     </a>
                                     {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
