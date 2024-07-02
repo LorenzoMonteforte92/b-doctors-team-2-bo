@@ -12,4 +12,6 @@ class Rating extends Model
     public function profile() {
         return $this->belongsTo(Profile::class);
     }
+
+    protected $fillable = ['score'];
 }

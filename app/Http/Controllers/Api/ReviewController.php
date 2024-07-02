@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Profile;
 
 
 class ReviewController extends Controller
@@ -29,17 +31,21 @@ class ReviewController extends Controller
             ]);
         }
         // salvo i dati nel DB
-        $review = new Review();
+        $review = new Review([
+            // 'profile_id' => Profile::all()
+        ]);
         $review->fill($data);
         $review->save();
-        
-       
 
+    
+        $profileId = Profile::all();
+       
+       
         return response()->json([
             'success' => true,
             ]);
 
-            dd($data);
+           
 
     }
 }
