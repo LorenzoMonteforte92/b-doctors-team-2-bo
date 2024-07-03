@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Profile;
 use App\Models\Rating;
+use Illuminate\Support\Facades\DB;
 
 
 class ReviewController extends Controller
 {
     public function store(Request $request){
         $data = $request->all();
+
+        
 
         // validazione name e description
         $validator = Validator::make($data, [
@@ -37,11 +40,31 @@ class ReviewController extends Controller
         $review->fill($data);
         $review->save();
 
+    
+
         return response()->json([
             'success' => true,
             ]);
 
            
 
+    }
+
+    public function index(){
+        $reviews = DB::table('reviews')
+        ->select('profiles.*','users.name', 'users.email', 'users.slug', DB::raw('AVG(score) AS average_score'))
+        ->join('ratings', 'reviews.rating_id', '=', 'ratings.id'  )
+        ->join('profiles', 'reviews.profile_id', '=', 'profiles.id' )
+        ->join('users', 'profiles.user_id', '=', 'users.id')
+        ->groupBy('profiles.id')
+        ->get();
+
+        // ->paginate(10)
+       
+
+        return response()->json([
+            'success' => true,
+            'results' => $reviews,
+        ]);
     }
 }

@@ -12,8 +12,8 @@ class Profile extends Model
     use HasFactory;
     protected $fillable = ['user_id', 'user_slug', 'photo', 'telephone_number', 'curriculum_vitae', 'bio', 'performance', 'visibility'];
 
-    public function review() {
-        return $this->belongsTo(Review::class);
+    public function reviews() {
+        return $this->hasMany(Review::class);
      }
 
      public function user() {
