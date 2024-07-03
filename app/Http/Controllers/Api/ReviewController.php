@@ -8,11 +8,12 @@ use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Profile;
+use App\Models\Rating;
 
 
 class ReviewController extends Controller
 {
-    public function store(Request $request, Profile $profile){
+    public function store(Request $request){
         $data = $request->all();
 
         // validazione name e description
@@ -33,8 +34,11 @@ class ReviewController extends Controller
         // salvo i dati nel DB
         $review = new Review();
         $review->fill($data);
+        $review = Rating::latest()->first();
         $review->save();
-       
+
+        // $review->ratings()->attach();
+
         return response()->json([
             'success' => true,
             ]);

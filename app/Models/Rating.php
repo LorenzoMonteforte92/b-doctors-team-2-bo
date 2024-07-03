@@ -9,9 +9,10 @@ class Rating extends Model
 {
     use HasFactory;
 
-    public function profile() {
-        return $this->belongsTo(Profile::class);
+    public function review() {
+        return $this->belongsTo(Review::class);
     }
+
 
     protected $fillable = ['score'];
 }
