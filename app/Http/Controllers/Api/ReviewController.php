@@ -52,7 +52,7 @@ class ReviewController extends Controller
 
     public function index(){
         $reviews = DB::table('reviews')
-        ->select('profiles.id AS profile_id','users.name', 'users.email', 'users.slug', DB::raw('AVG(score) AS average_score'))
+        ->select('profiles.id AS profile_id','users.name', 'users.email', 'users.slug', DB::raw('ROUND(AVG(score)) AS average_score'))
         ->join('ratings', 'reviews.rating_id', '=', 'ratings.id'  )
         ->join('profiles', 'reviews.profile_id', '=', 'profiles.id' )
         ->join('users', 'profiles.user_id', '=', 'users.id')
@@ -62,6 +62,19 @@ class ReviewController extends Controller
         return response()->json([
             'success' => true,
             'results' => $reviews,
+        ]);
+    }
+
+    public function countReviews(){
+        $reviewCount = DB::table('reviews')
+        ->select(DB::raw('COUNT(reviews.id) AS review_count'))
+        ->join('profiles', 'reviews.profile_id', '=', 'profiles.id' )
+        ->groupBy('profiles.id')
+        ->get();
+
+        return response()->json([
+            'success' => true,
+            'results' => $reviewCount,
         ]);
     }
 }
