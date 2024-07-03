@@ -5,6 +5,7 @@
 
 
 @section('content')
+
     {{-- se ha recensioni mostra le recensioni, altrimenti mostra un messaggio 'non hai ancora recensioni' e propone una sponsorship --}}
     <a href="" class="btn btn-bd-primary">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
     @if ($reviews->count() > 0)

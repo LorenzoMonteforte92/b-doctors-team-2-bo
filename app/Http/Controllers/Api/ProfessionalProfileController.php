@@ -47,7 +47,7 @@ class ProfessionalProfileController extends Controller
                    ->join('ratings', 'reviews.rating_id', '=', 'ratings.id' )
                    ->join('specialisations', 'profile_specialisation.specialisation_id', '=', 'specialisations.id')
                    ->join('users', 'profiles.user_id' , '=', 'users.id', )
-                   ->select('specialisations.name AS spec_name','specialisations.slug AS spec_slug', 'profile_specialisation.*', 'users.name AS user_name', 'users.slug AS user_slug', 'users.email AS user_mail', 'profiles.*','reviews.*', 'ratings.*')
+                   ->select('specialisations.name AS spec_name','specialisations.slug AS spec_slug', 'profile_specialisation.*', 'users.name AS user_name', 'users.slug AS user_slug', 'users.email AS user_mail', 'profiles.*','reviews.name', 'reviews.description', 'ratings.score')
                    ->where('specialisations.slug', '=', $slug)
                    ->get();
 
