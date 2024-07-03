@@ -37,6 +37,7 @@ class RatingController extends Controller
         // return
         return response()->json([
             'success' => true,
+            'data' => $rating,
             'message' => 'Voto salvato correttamente.',
         ]);
     }
