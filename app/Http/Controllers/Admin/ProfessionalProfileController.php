@@ -23,13 +23,14 @@ class ProfessionalProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(    )
     {
-        $reviews = Review::all();
-        $ratings = Rating::all();
-        $messages = UserMessage::all();
-        $profiles = Profile::all();
         $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id)->first();
+        $reviews = Review::where('profile_id', $user->id)->get();
+        $ratings = Rating::all();
+        $messages = UserMessage::where('profile_id', $user->id)->get();
+        $profiles = Profile::all();
 
         return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }

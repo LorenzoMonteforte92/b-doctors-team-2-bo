@@ -20,7 +20,30 @@
                     <tr>
                         <td>{{ $review->name }}</td>
                         <td>{{ $review->description }}</td>
-                        <td>{{ $review->score }}</td>
+                        <td>
+                            {{dd($ratings)}}
+                            @if ($review->rating_id == 1)
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            @elseif ($review->rating_id == 2)
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            @elseif ($review->rating_id == 3)
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            @elseif ($review->rating_id == 4)
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            @elseif ($review->rating_id == 5)
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            <i class="fas fa-star brand-text-color-1"></i>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -32,6 +55,8 @@
     @endif
 
     {{-- Mostra i messaggi ricevuti se ce ne sono, altrimenti 'Non hai ricevuto messaggi' --}}
+
+    {{-- {{dd($messages)}} --}}
     @if ($messages->count() > 0)
         <h1 class="brand-text-color-1">Messaggi Ricevuti</h1>
         <table class="table table-bordered brand-color-2-border align-middle">
