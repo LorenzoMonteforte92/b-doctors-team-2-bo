@@ -61,7 +61,7 @@ class ReviewController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' => $reviews,
+            'reviews' => $reviews,
         ]);
     }
 

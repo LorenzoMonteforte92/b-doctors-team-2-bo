@@ -22,7 +22,7 @@
                         <td>{{ $review->name }}</td>
                         <td>{{ $review->description }}</td>
                         <td>
-                            {{dd($ratings)}}
+                            
                             @if ($review->rating_id == 1)
                             <i class="fas fa-star brand-text-color-1"></i>
                             @elseif ($review->rating_id == 2)
