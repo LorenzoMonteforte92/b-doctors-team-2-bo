@@ -64,6 +64,7 @@
         <table class="table table-bordered brand-color-2-border align-middle">
             <thead>
                 <th class="text-center brand-text-color-1">Nome utente</th>
+                <th class="text-center brand-text-color-1">Oggetto</th>
                 <th class="text-center brand-text-color-1">Descrizione</th>
                 <th class="text-center brand-text-color-1">Email</th>
                 <th class="text-center brand-text-color-1">Data</th>
@@ -72,6 +73,7 @@
                 @foreach ($messages as $message)
                     <tr>
                         <td>{{ $message->name }}</td>
+                        <td>{{ $message->object }}</td>
                         <td>{{ $message->message }}</td>
                         <td>{{ $message->email }}</td>
                         <td>{{ $message->date }}</td>
