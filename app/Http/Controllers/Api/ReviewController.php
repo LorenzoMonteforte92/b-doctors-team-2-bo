@@ -31,6 +31,9 @@ class ReviewController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
+
+        $ratingId = Rating::all();
+
         // salvo i dati nel DB
         $review = new Review();
         $review->fill($data);
