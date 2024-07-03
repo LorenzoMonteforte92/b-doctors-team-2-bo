@@ -12,7 +12,7 @@ use App\Models\Profile;
 
 class ReviewController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request, Profile $profile){
         $data = $request->all();
 
         // validazione name e description
@@ -31,15 +31,9 @@ class ReviewController extends Controller
             ]);
         }
         // salvo i dati nel DB
-        $review = new Review([
-            // 'profile_id' => Profile::all()
-        ]);
+        $review = new Review();
         $review->fill($data);
         $review->save();
-
-    
-        $profileId = Profile::all();
-       
        
         return response()->json([
             'success' => true,

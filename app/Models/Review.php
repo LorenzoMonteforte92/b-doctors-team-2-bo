@@ -17,5 +17,5 @@ class Review extends Model
         return $this->hasMany(Rating::class);
      }
 
-     protected $fillable = ['name','description'];
+     protected $fillable = ['name','description','profile_id'];
 }
