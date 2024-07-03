@@ -59,12 +59,9 @@ class ReviewController extends Controller
         ->groupBy('profiles.id')
         ->get();
 
-        // ->paginate(10)
-       
-
         return response()->json([
             'success' => true,
-            'reviews' => $reviews,
+            'results' => $reviews,
         ]);
     }
 }
