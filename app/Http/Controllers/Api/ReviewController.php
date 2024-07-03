@@ -52,7 +52,7 @@ class ReviewController extends Controller
 
     public function index(){
         $reviews = DB::table('reviews')
-        ->select('profiles.*','users.name', 'users.email', 'users.slug', DB::raw('AVG(score) AS average_score'))
+        ->select('profiles.id AS profile_id','users.name', 'users.email', 'users.slug', DB::raw('AVG(score) AS average_score'))
         ->join('ratings', 'reviews.rating_id', '=', 'ratings.id'  )
         ->join('profiles', 'reviews.profile_id', '=', 'profiles.id' )
         ->join('users', 'profiles.user_id', '=', 'users.id')
