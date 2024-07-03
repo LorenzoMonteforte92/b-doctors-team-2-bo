@@ -6,6 +6,7 @@
 
 @section('content')
     {{-- se ha recensioni mostra le recensioni, altrimenti mostra un messaggio 'non hai ancora recensioni' e propone una sponsorship --}}
+    <a href="" class="btn btn-bd-primary">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
     @if ($reviews->count() > 0)
         <h1 class="brand-text-color-1">Recensioni Ricevute</h1>
         <table class="table table-bordered brand-color-2-border  align-middle">
@@ -28,8 +29,6 @@
         <h1 class="brand-text-color-1">Recensioni</h1>
         <p class="brand-text-color-1">Non hai ancora ricevuto recensioni</p>
         <p class="brand-text-color-1">Vuoi ricevere recensioni? Sponsorizza il tuo account!</p>
-        <a href="" class="btn btn-bd-primary">Sponsor
-            <i class="fas fa-hand-holding-usd"></i></a>
     @endif
 
     {{-- Mostra i messaggi ricevuti se ce ne sono, altrimenti 'Non hai ricevuto messaggi' --}}
