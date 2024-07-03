@@ -14,6 +14,7 @@ use App\Models\Specialisation;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 
 class ProfessionalProfileController extends Controller
@@ -31,8 +32,9 @@ class ProfessionalProfileController extends Controller
         $ratings = Rating::all();
         $messages = UserMessage::where('profile_id', $user->id)->get();
         $profiles = Profile::all();
+        $ratingVote = DB::table('ratings')->select('ratings.score')->get();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'ratingVote'));
     }
 
     /**
