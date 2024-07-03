@@ -13,5 +13,5 @@ class UserMessage extends Model
         return $this->hasMany(Profile::class);
     }
 
-    protected $fillable = ['name','object', 'email', 'message', 'accepted_tc'];
+    protected $fillable = ['name','object', 'email', 'message', 'accepted_tc', 'profile_id'];
 }
