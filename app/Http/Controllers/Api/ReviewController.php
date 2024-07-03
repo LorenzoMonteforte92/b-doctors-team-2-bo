@@ -67,8 +67,9 @@ class ReviewController extends Controller
 
     public function countReviews(){
         $reviewCount = DB::table('reviews')
-        ->select(DB::raw('COUNT(reviews.id) AS review_count'))
+        ->select('profiles.id AS profile_id', 'users.name', 'users.email', 'users.slug', DB::raw('COUNT(reviews.id) AS review_count'))
         ->join('profiles', 'reviews.profile_id', '=', 'profiles.id' )
+        ->join('users', 'profiles.user_id', '=', 'users.id')
         ->groupBy('profiles.id')
         ->get();
 
