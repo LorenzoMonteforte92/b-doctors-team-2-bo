@@ -9,8 +9,8 @@ class Rating extends Model
 {
     use HasFactory;
 
-    public function review() {
-        return $this->belongsTo(Review::class);
+    public function reviews() {
+        return $this->hasMany(Review::class);
     }
 
 

@@ -13,9 +13,9 @@ class Review extends Model
         return $this->hasMany(Profile::class);
     }
 
-    public function ratings() {
-        return $this->hasMany(Rating::class);
+    public function rating() {
+        return $this->belongsTo(Rating::class);
      }
 
-     protected $fillable = ['name','description','profile_id','rating_id'];
+     protected $fillable = ['name','description','profile_id'];
 }

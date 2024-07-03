@@ -34,10 +34,7 @@ class ReviewController extends Controller
         // salvo i dati nel DB
         $review = new Review();
         $review->fill($data);
-        $review = Rating::latest()->first();
         $review->save();
-
-        // $review->ratings()->attach();
 
         return response()->json([
             'success' => true,
