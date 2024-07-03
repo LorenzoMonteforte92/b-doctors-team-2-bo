@@ -18,6 +18,7 @@ class RatingController extends Controller
             $data,
             [
                 'score' => 'required|numeric',
+
             ],
             [
                 'score.required' => 'Devi selezionare un voto da 1 a 5.',

@@ -43,15 +43,15 @@ class ProfessionalProfileController extends Controller
 
         $profile = DB::table('profile_specialisation')
                    ->join('profiles', 'profile_specialisation.profile_id','=', 'profiles.id')
-                //    ->join('reviews', 'reviews.profile_id', '=', 'profiles.id' )
-                //    ->join('ratings', 'reviews.profile_id', '=', 'ratings.id' )
+                   ->join('reviews', 'reviews.profile_id', '=', 'profiles.id' )
+                   ->join('ratings', 'reviews.rating_id', '=', 'ratings.id' )
                    ->join('specialisations', 'profile_specialisation.specialisation_id', '=', 'specialisations.id')
                    ->join('users', 'profiles.user_id' , '=', 'users.id', )
-                   ->select('specialisations.name AS spec_name','specialisations.slug AS spec_slug', 'profile_specialisation.*', 'users.name AS user_name', 'users.slug AS user_slug', 'users.email AS user_mail', 'profiles.*',)
+                   ->select('specialisations.name AS spec_name','specialisations.slug AS spec_slug', 'profile_specialisation.*', 'users.name AS user_name', 'users.slug AS user_slug', 'users.email AS user_mail', 'profiles.*','reviews.*', 'ratings.*')
                    ->where('specialisations.slug', '=', $slug)
                    ->get();
 
-                //    'reviews.*', 'ratings.*'
+
 
 
         if($profile){
@@ -68,4 +68,10 @@ class ProfessionalProfileController extends Controller
 
         return response()->json($apiData);
     }
+
+    // public function showByAvarage(){
+    //     $profile = DB::select('AVG(ratings)')
+    //     ->get();
+                   
+    // }
 }
