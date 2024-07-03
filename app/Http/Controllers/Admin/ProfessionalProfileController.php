@@ -32,12 +32,8 @@ class ProfessionalProfileController extends Controller
         $ratings = Rating::all();
         $messages = UserMessage::where('profile_id', $user->id)->get();
         $profiles = Profile::all();
-        $ratingVote = DB::table('ratings')->select('ratings.score')
-                         ->join('reviews', 'ratings.id', '=', 'reviews.rating_id')
-                         ->where('profile_id', $user->id)
-                         ->get();
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'ratingVote'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }
 
     /**

@@ -5,7 +5,6 @@
 
 
 @section('content')
-{{dd($ratingVote)}}
     {{-- se ha recensioni mostra le recensioni, altrimenti mostra un messaggio 'non hai ancora recensioni' e propone una sponsorship --}}
     <a href="" class="btn btn-bd-primary">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
     @if ($reviews->count() > 0)
@@ -21,30 +20,32 @@
                     <tr>
                         <td>{{ $review->name }}</td>
                         <td>{{ $review->description }}</td>
-                        <td>
-                            
-                            @if ($review->rating_id == 1)
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            @elseif ($review->rating_id == 2)
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            @elseif ($review->rating_id == 3)
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            @elseif ($review->rating_id == 4)
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            @elseif ($review->rating_id == 5)
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            <i class="fas fa-star brand-text-color-1"></i>
-                            @endif
-                        </td>
+                        {{-- faccio un if per le stelle in base al valore di score --}}
+                        @if ($review->rating->score == 1)
+                            <td><i class="fas fa-star brand-text-color-1"></i></td>
+                        @elseif ($review->rating->score == 2)
+                            <td><i class="fas fa-star brand-text-color-1"></i><i class="fas fa-star brand-text-color-1"></i>
+                            </td>
+                        @elseif ($review->rating->score == 3)
+                            <td><i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                            </td>
+                        @elseif ($review->rating->score == 4)
+                            <td><i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                            </td>
+                        @elseif ($review->rating->score == 5)
+                            <td><i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                                <i class="fas fa-star brand-text-color-1"></i>
+                            </td>
+                        @endif
+
                     </tr>
                 @endforeach
             </tbody>
