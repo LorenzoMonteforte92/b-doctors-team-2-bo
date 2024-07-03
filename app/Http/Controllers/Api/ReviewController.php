@@ -32,8 +32,6 @@ class ReviewController extends Controller
             ]);
         }
 
-        $ratingId = Rating::all();
-
         // salvo i dati nel DB
         $review = new Review();
         $review->fill($data);
