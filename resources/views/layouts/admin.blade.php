@@ -61,12 +61,15 @@
                                         {{-- se presente photo, mostra la photo, altrimenti ne mette una di default --}}
                                         @if (Auth::user()->profile->photo)
                                             <img src="{{ asset('storage/' . Auth::user()->profile->photo) }}"
-                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
+                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100
+                                                height="100">
                                         @else
-                                            <img src="{{ asset('img/default.png') }}" 
-                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
+                                            <img src="{{ asset('img/default.png') }}" alt=""
+                                                class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
                                         @endif
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
+                                        {{-- arriva uno sponsor --}}
+                                        <button class="btn btn-danger animated mt-2" id="circle-butt">SPONSOR</button>
                                     </a>
                                     {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
                                     @if (Auth::user()->profile->visibility == 0)
@@ -77,13 +80,11 @@
                                     @endif
                                 </li>
                             @endif
-                            {{-- arriva uno sponsor --}}
-                            <a href="" class="btn btn-bd-primary mt-2">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
                             <a class="btn btn-bd-primary mt-2 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
                                 href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
                                 <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
                             </a>
-                           
+
                             <li class="nav-item mt-2">
                                 <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.dashboard' ? 'brand-color-2' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
@@ -106,7 +107,6 @@
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>Recensioni ricevute
                                     </a>
                                 </li>
-                               
                             @else
                                 <li class="nav-item mt-2">
                                     <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.create' ? 'brand-color-2' : '' }}"
