@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Sponsorship;
+
 
 class SponsorshipController extends Controller
 {
@@ -14,7 +16,9 @@ class SponsorshipController extends Controller
      */
     public function index()
     {
-        //
+        // return delle Sponsorship
+        $Sponsorships = Sponsorship::all();
+        return view('admin.sponsorships.index', compact('Sponsorships'));
     }
 
     /**
@@ -35,7 +39,7 @@ class SponsorshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
     }
 
     /**
