@@ -22,13 +22,15 @@
                 <th class="text-center brand-text-color-1">Data</th>
             </thead>
             <tbody>
+                {{-- mostra i messaggi in ordine di data decrescente --}}
+                
                 @foreach ($messages as $message)
                     <tr>
                         <td>{{ $message->name }}</td>
                         <td>{{ $message->object }}</td>
                         <td>{{ $message->message }}</td>
                         <td>{{ $message->email }}</td>
-                        <td>{{ $message->date }}</td>
+                        <td>{{ \Carbon\Carbon::parse($message->date)->format('d/m/Y H:i') }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -30,7 +30,9 @@ class ProfessionalProfileController extends Controller
         $profile = Profile::where('user_id', $user->id)->first();
         $reviews = Review::where('profile_id', $user->id)->get();
         $ratings = Rating::all();
-        $messages = UserMessage::where('profile_id', $user->id)->get();
+        $messages = UserMessage::where('profile_id', $user->id)
+            ->orderBy('date', 'desc')
+            ->get();
         $profiles = Profile::all();
 
         return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
@@ -41,7 +43,9 @@ class ProfessionalProfileController extends Controller
     {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
-        $reviews = Review::where('profile_id', $user->id)->get();
+        $reviews = Review::where('profile_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         $ratings = Rating::all();
         $messages = UserMessage::where('profile_id', $user->id)->get();
         $profiles = Profile::all();

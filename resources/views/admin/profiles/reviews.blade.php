@@ -13,6 +13,7 @@
                 <th class="text-center brand-text-color-1">Nome utente</th>
                 <th class="text-center brand-text-color-1">Descrizione</th>
                 <th class="text-center brand-text-color-1">Valutazione</th>
+                <th class="text-center brand-text-color-1">Data</th>
             </thead>
             <tbody>
                 @foreach ($reviews as $review)
@@ -45,6 +46,7 @@
                                 <i class="fas fa-star brand-text-color-1"></i>
                             </td>
                         @endif
+                        <td>{{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y H:i') }}</td>
 
                     </tr>
                 @endforeach
