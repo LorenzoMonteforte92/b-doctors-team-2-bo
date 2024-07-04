@@ -69,8 +69,10 @@
                                         @endif
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
                                         {{-- arriva uno sponsor --}}
-                                        <button class="btn btn-danger animated mt-2" id="circle-butt">SPONSOR</button>
                                     </a>
+                                    <button class="btn btn-danger animated mt-2" id="circle-butt">
+                                        <a href="{{ route('admin.sponsorships.index') }}">SPONSOR</a>
+                                    </button>
                                     {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
                                     @if (Auth::user()->profile->visibility == 0)
                                         <div class="m-0 alert alert-danger alert-dismissible fade show" role="alert">

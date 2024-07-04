@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfessionalProfileController;
+use App\Http\Controllers\Admin\SponsorshipController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // route per reviews
     Route::get('profiles/reviews', [ProfessionalProfileController::class, 'reviews'])->name('reviews');
+    Route::resource('sponsorships', SponsorshipController::class);
     Route::resource('profiles', ProfessionalProfileController::class)->parameters([
         'profiles' => 'profile:user_slug'
     ]);
