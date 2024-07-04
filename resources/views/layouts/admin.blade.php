@@ -70,14 +70,21 @@
                                     </a>
                                     {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
                                     @if (Auth::user()->profile->visibility == 0)
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <div class="m-0 alert alert-danger alert-dismissible fade show" role="alert">
                                             <strong>Attenzione!</strong> Il tuo profilo è nascosto.
                                             {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
                                         </div>
                                     @endif
                                 </li>
                             @endif
-                            <li class="nav-item">
+                            {{-- arriva uno sponsor --}}
+                            <a href="" class="btn btn-bd-primary mt-2">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
+                            <a class="btn btn-bd-primary mt-2 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
+                                href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
+                                <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
+                            </a>
+                           
+                            <li class="nav-item mt-2">
                                 <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.dashboard' ? 'brand-color-2' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
@@ -87,21 +94,21 @@
                             {{-- condizione se presente user()->profile mostra 'modifica profile' altrimenti mostra 'crea profilo'  --}}
                             @if (Auth::user()->profile)
                                 {{-- mostra il profilo di user()->profile usando admin.profiles.show --}}
-                                <li class="nav-item">
+                                <li class="nav-item mt-2">
                                     <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.index' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.index') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>I tuoi messaggi
                                     </a>
                                 </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
-                                        href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
-                                        <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
+                                <li class="nav-item mt-2">
+                                    <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.reviews' ? 'brand-color-2' : '' }}"
+                                        href="{{ route('admin.reviews') }}">
+                                        <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>Recensioni ricevute
                                     </a>
                                 </li>
+                               
                             @else
-                                <li class="nav-item">
+                                <li class="nav-item mt-2">
                                     <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.create' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.create') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Crea profilo

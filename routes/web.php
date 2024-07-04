@@ -32,6 +32,8 @@ Route::middleware(['auth', 'verified'])
 ->prefix('admin')
 ->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // route per reviews
+    Route::get('profiles/reviews', [ProfessionalProfileController::class, 'reviews'])->name('reviews');
     Route::resource('profiles', ProfessionalProfileController::class)->parameters([
         'profiles' => 'profile:user_slug'
     ]);

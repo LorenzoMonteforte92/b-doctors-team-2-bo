@@ -24,7 +24,7 @@ class ProfessionalProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(    )
+    public function index()
     {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
@@ -34,6 +34,18 @@ class ProfessionalProfileController extends Controller
         $profiles = Profile::all();
 
         return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
+    }
+
+    // funzione che rimanda a reviews.blade.php
+    public function reviews()
+    {
+        $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id)->first();
+        $reviews = Review::where('profile_id', $user->id)->get();
+        $ratings = Rating::all();
+        $messages = UserMessage::where('profile_id', $user->id)->get();
+        $profiles = Profile::all();
+        return view('admin.profiles.reviews', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'profile'));
     }
 
     /**
@@ -55,28 +67,29 @@ class ProfessionalProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $validate= $request->validate([
-            'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
-            'telephone_number' => 'required|string|max:15',
-            'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
-            'specialisations' => 'required',
-            'bio' => 'nullable|string|min:10',
-            'performance' => 'nullable|string|min:10',
-        ],
-        [
-            'photo.mimes' => 'il file deve essere png, jpg o jpeg',
-            'photo.max' => 'il file non deve superare i 2mb', 
-            'telephone_number.required' => 'Numero di telefono obbligatorio', 
-            'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
-            'curriculum_vitae.mimes' => 'il file deve essere png, jpg o jpeg',
-            'curriculum_vitae.max' => 'il file non deve superare i 2mb',
-            'specialisations.required' => 'devi selezionare almeno una specializzazione',
-            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri',
-            'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
-        ]
-     
-    );
-        
+        $validate = $request->validate(
+            [
+                'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
+                'telephone_number' => 'required|string|max:15',
+                'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
+                'specialisations' => 'required',
+                'bio' => 'nullable|string|min:10',
+                'performance' => 'nullable|string|min:10',
+            ],
+            [
+                'photo.mimes' => 'il file deve essere png, jpg o jpeg',
+                'photo.max' => 'il file non deve superare i 2mb',
+                'telephone_number.required' => 'Numero di telefono obbligatorio',
+                'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
+                'curriculum_vitae.mimes' => 'il file deve essere png, jpg o jpeg',
+                'curriculum_vitae.max' => 'il file non deve superare i 2mb',
+                'specialisations.required' => 'devi selezionare almeno una specializzazione',
+                'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri',
+                'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
+            ]
+
+        );
+
         $profileData = $request->all();
 
         if ($request->hasFile('photo')) {
@@ -98,13 +111,12 @@ class ProfessionalProfileController extends Controller
         $newProfile->fill($profileData);
         $newProfile->save();
 
-        if($request->has('specialisations')) {
+        if ($request->has('specialisations')) {
             $newProfile->specialisations()->attach($profileData['specialisations']);
         };
- 
 
-        return redirect()->route('admin.profiles.show', ['profile' => $newProfile->user_slug])->with('message','Nuovo profilo creato con successo');
 
+        return redirect()->route('admin.profiles.show', ['profile' => $newProfile->user_slug])->with('message', 'Nuovo profilo creato con successo');
     }
 
     /**
@@ -115,7 +127,7 @@ class ProfessionalProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        if ($profile->user_id!== auth()->id()) {
+        if ($profile->user_id !== auth()->id()) {
             abort(403, 'You do not have permission to access this profile');
         }
         $user = Auth::user();
@@ -132,12 +144,11 @@ class ProfessionalProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        if ($profile->user_id!== auth()->id()) {
+        if ($profile->user_id !== auth()->id()) {
             abort(403, 'You do not have permission to access this profile');
         }
         $specialisations = Specialisation::all();
         return view('admin.profiles.edit', compact('profile', 'specialisations'));
-       
     }
 
     /**
@@ -149,60 +160,61 @@ class ProfessionalProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        $validate = $request->validate([
-            'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
-            'telephone_number' => 'required|string|max:15',
-            // 'address' => 'required',
-            'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
-            'specialisations' => 'required',
-            'bio' => 'nullable|string|min:10',
-            'performance' => 'nullable|string|min:10',
-            'visibility' => 'boolean'
+        $validate = $request->validate(
+            [
+                'photo' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
+                'telephone_number' => 'required|string|max:15',
+                // 'address' => 'required',
+                'curriculum_vitae' => 'nullable|file|mimes:png,jpg,jpeg|max:2044',
+                'specialisations' => 'required',
+                'bio' => 'nullable|string|min:10',
+                'performance' => 'nullable|string|min:10',
+                'visibility' => 'boolean'
 
-        ],
-        [
-            'photo.mimes' => 'il file deve essere png, jpg o jpeg',
-            'photo.max' => 'il file non deve superare i 2mb', 
-            'telephone_number.required' => 'Numero di telefono obbligatorio', 
-            'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
-            // 'address' => 'indirizzo obbligatorio',
-            'curriculum_vitae.mimes' => 'il file deve essere png, jpg o jpeg',
-            'curriculum_vitae.max' => 'il file non deve superare i 2mb',
-            // 'specialisations.required' => 'devi selezionare almeno una specializzazione',
-            'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri',
-            'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
-         ]
-    );
-            //Campi Imput per richiamare l'edit //
-            // $profile->photo = $request->input('photo');
-            // $profile->telephone_number = $request->input('telephone_number');
-            // $profile->bio = $request->input('bio');
-            // $profile->performance = $request->input('performance');
-            $form = $request->all();
-            if ($request->hasFile('photo')) {
-                if ($profile->photo) {
-                    Storage::delete($profile->photo);
-                }
-                $img_path = Storage::disk('public')->put('projects_images', $form['photo']);
-                $form['photo'] = $img_path;
+            ],
+            [
+                'photo.mimes' => 'il file deve essere png, jpg o jpeg',
+                'photo.max' => 'il file non deve superare i 2mb',
+                'telephone_number.required' => 'Numero di telefono obbligatorio',
+                'telephone_number.max' => 'il numero di telefono deve contenere massimo 15 cifre',
+                // 'address' => 'indirizzo obbligatorio',
+                'curriculum_vitae.mimes' => 'il file deve essere png, jpg o jpeg',
+                'curriculum_vitae.max' => 'il file non deve superare i 2mb',
+                // 'specialisations.required' => 'devi selezionare almeno una specializzazione',
+                'bio.min' => 'Bio non valida: deve contenere almeno 10 caratteri',
+                'performance.min' => 'Descrizione prestazioni non valida: deve contenere almeno 10 caratteri',
+            ]
+        );
+        //Campi Imput per richiamare l'edit //
+        // $profile->photo = $request->input('photo');
+        // $profile->telephone_number = $request->input('telephone_number');
+        // $profile->bio = $request->input('bio');
+        // $profile->performance = $request->input('performance');
+        $form = $request->all();
+        if ($request->hasFile('photo')) {
+            if ($profile->photo) {
+                Storage::delete($profile->photo);
             }
-            if ($request->hasFile('curriculum_vitae')) {
-                if ($profile->curriculum_vitae) {
-                    Storage::delete($profile->curriculum_vitae);
-                }
-                $img_path = Storage::disk('public')->put('projects_images', $form['curriculum_vitae']);
-                $form['curriculum_vitae'] = $img_path;
+            $img_path = Storage::disk('public')->put('projects_images', $form['photo']);
+            $form['photo'] = $img_path;
+        }
+        if ($request->hasFile('curriculum_vitae')) {
+            if ($profile->curriculum_vitae) {
+                Storage::delete($profile->curriculum_vitae);
             }
-        
-    
-            $profile->update($form);
+            $img_path = Storage::disk('public')->put('projects_images', $form['curriculum_vitae']);
+            $form['curriculum_vitae'] = $img_path;
+        }
 
-            if($request->has('specialisations')) {
-                $profile->specialisations()->sync($form['specialisations']);
-            } else {
-                $profile->specialisations()->detach();
-              };
-    
+
+        $profile->update($form);
+
+        if ($request->has('specialisations')) {
+            $profile->specialisations()->sync($form['specialisations']);
+        } else {
+            $profile->specialisations()->detach();
+        };
+
         return redirect()->route('admin.profiles.show', ['profile' => $profile->user_slug])->with('message', 'Profilo aggiornato con successo.');
     }
 
@@ -215,7 +227,7 @@ class ProfessionalProfileController extends Controller
     public function destroy($id)
     {
         $profile = Profile::findOrFail($id);
-        
+
         if ($profile->photo) {
             Storage::delete($profile->photo);
         }
