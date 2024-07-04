@@ -79,11 +79,11 @@
                                         </div>
                                     @endif
                                 </li>
+                                <a class="btn btn-bd-primary mt-2 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
+                                    href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
+                                    <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
+                                </a>
                             @endif
-                            <a class="btn btn-bd-primary mt-2 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
-                                href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
-                                <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
-                            </a>
 
                             <li class="nav-item mt-2">
                                 <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.dashboard' ? 'brand-color-2' : '' }}"
