@@ -69,9 +69,5 @@ class ProfessionalProfileController extends Controller
         return response()->json($apiData);
     }
 
-    // public function showByAvarage(){
-    //     $profile = DB::select('AVG(ratings)')
-    //     ->get();
-                   
-    // }
+    
 }
