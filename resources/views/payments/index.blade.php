@@ -4,7 +4,7 @@
     <title>Payment Page</title>
 </head>
 <body>
-    <form id="payment-form" action="{{ route('payments.checkout') }}" method="post">
+    <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post">
         @csrf
         <div id="dropin-container"></div>
         <input type="hidden" name="amount" value="10.00">

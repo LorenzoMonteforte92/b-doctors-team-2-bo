@@ -40,6 +40,11 @@ Route::middleware(['auth', 'verified'])
     Route::resource('profiles', ProfessionalProfileController::class)->parameters([
         'profiles' => 'profile:user_slug'
     ]);
+    // payments
+    Route::get('payments', [PaymentController::class, 'index'])->name('payments.index');
+    Route::post('payments/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');
+    Route::get('payments/success', [PaymentController::class, 'success'])->name('payments.success');
+    Route::get('payments/error', [PaymentController::class, 'error'])->name('payments.error');
 });
 
 Route::middleware('auth')->group(function () {
@@ -48,10 +53,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// payments
-Route::get('payments', [PaymentController::class, 'index'])->name('payments.index');
-Route::post('payments/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');
-Route::get('payments/success', [PaymentController::class, 'success'])->name('payments.success');
-Route::get('payments/error', [PaymentController::class, 'error'])->name('payments.error');
 
 require __DIR__.'/auth.php';

@@ -18,7 +18,7 @@
                     <td>{{ $sponsorship->price }}</td>
                     <td>
                         <a class="btn btn-bd-primary mt-2"
-                            href="{{ route('payments.index') }}">
+                            href="{{ route('admin.payments.index') }}">
                             <i class="fa-solid fa-money-bill"></i></i> Acquista
                         </a>
                     </td>

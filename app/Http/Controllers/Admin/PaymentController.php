@@ -34,9 +34,9 @@ class PaymentController extends Controller
             ]
         ]);
         if ($result->success) {
-            return redirect()->route('payments.success');
+            return redirect()->route('admin.payments.success');
         } else {
-            return redirect()->route('payments.error')->withErrors('Payment failed.');
+            return redirect()->route('admin.payments.error')->withErrors('Payment failed.');
         }
     }
 
