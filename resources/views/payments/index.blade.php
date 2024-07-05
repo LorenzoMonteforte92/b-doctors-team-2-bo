@@ -5,17 +5,42 @@
 @section('content')
 
     <body>
-        <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post">
+        <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sponsorizzazione</th>
+                        <th scope="col">Durata</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($sponsorships as $sponsorship)
+                        <tr>
+                            <td scope="row">{{ $sponsorship->name }}</td>
+                            <td>{{ $sponsorship->duration }}</td>
+                            <td>{{ $sponsorship->price }}</td>
+                            <td>
+                                <label for="{{$sponsorship->id}}"></label>
+                                <input type="checkbox" name="{{$sponsorship->id}}" id="{{$sponsorship->id}}">
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
             <div id="dropin-container"></div>
-            <input type="hidden" name="amount" value="10.00">
+            <input type="hidden" name="sponsorhip_id" value="{{ $sponsorship->id }}">
+            <input type="hidden" name="profile_id" value="{{ $user->id }}">
+            <input type="hidden" name="amount" value="{{$sponsorship->price}}">
             <button type="submit">Submit Payment</button>
         </form>
 
         <script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
         <script>
-            var form = document.querySelector('#payment-form');
-            var clientToken = "{{ $clientToken }}";
+            const form = document.querySelector('#payment-form');
+            const clientToken = "{{ $clientToken }}";
 
             braintree.dropin.create({
                 authorization: clientToken,
@@ -35,7 +60,7 @@
                         }
 
                         // Add the nonce to the form and submit
-                        var nonceInput = document.createElement('input');
+                        const nonceInput = document.createElement('input');
                         nonceInput.setAttribute('type', 'hidden');
                         nonceInput.setAttribute('name', 'payment_method_nonce');
                         nonceInput.setAttribute('value', payload.nonce);
