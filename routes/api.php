@@ -36,7 +36,8 @@ Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/messages', [UserMessageController::class, 'store']);
 Route::post('/ratings', [RatingController::class, 'store']);
 
-Route::get('/test', [ReviewController::class, 'filterResults']);
+Route::get('/test', [ReviewController::class, 'filterProfiles']);
+
 
 
 
