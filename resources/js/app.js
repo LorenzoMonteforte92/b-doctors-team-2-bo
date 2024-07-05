@@ -22,9 +22,3 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         })
     }
 });
-
-$( document ).ready(function() {
-    $('#button').hover(function() {
-      $('#call').addClass('animated shake');
-    });
-  });

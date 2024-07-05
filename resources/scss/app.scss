@@ -46,51 +46,55 @@
     border: #70c3a5 solid 1px;
 }
 
-#circle-butt {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    /*
-    background: #A00000;*/
-    font-weight: bold;
-    color: white;
-    border: dashed 3px white;
-    transition: .5s all;
-    animation: circle;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    font-size: 16px;
-}
+$speed: 0.5s;
 
-#circle-butt:hover {
-    border: solid;
-}
-
-#button:hover i {
-    animation: call;
-    animation-duration: 1s;
-}
-
-@keyframes call {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes circle {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+.btn-flip{
+	opacity: 1;
+	outline: 0;
+	color: #fff;
+	line-height: 40px;
+	position: relative;
+	text-align: center;
+	letter-spacing: 1px;
+	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+	
+	&:hover{
+		
+		&:after{
+			opacity: 1;
+			transform: translateY(0) rotateX(0);
+		}
+		
+		&:before{
+			opacity: 0;
+			transform: translateY(50%) rotateX(90deg);
+		}
+	}
+	
+	&:after{
+		top: 0;
+		left: 0;
+		opacity: 0;
+		width: 100%;
+		display: block;
+		transition: $speed;
+		position: absolute;
+		content: attr(data-back);
+		transform: translateY(-50%) rotateX(90deg);
+	}
+	
+	&:before{
+		top: 0;
+		left: 0;
+		opacity: 1;
+		display: block;
+		padding: 0 30px;
+		line-height: 40px;
+		transition: $speed;
+		position: relative;
+		content: attr(data-front);
+		transform: translateY(0) rotateX(0);
+	}
 }
