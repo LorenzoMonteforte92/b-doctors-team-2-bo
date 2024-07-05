@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment Success</title>
-</head>
+@extends('layouts.admin')
+@section('title')
+    {{ 'Interazioni' }}
+@endsection
+@section('content')
+
 <body>
     <h1>Payment Successful!</h1>
 </body>
-</html>
+
+@endsection

@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment Error</title>
-</head>
+@extends('layouts.admin')
+@section('title')
+    {{ 'Interazioni' }}
+@endsection
+@section('content')
+
 <body>
     <h1>Payment Failed!</h1>
     @if($errors->any())
@@ -15,4 +16,5 @@
         </div>
     @endif
 </body>
-</html>
+
+@endsection
