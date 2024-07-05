@@ -61,23 +61,35 @@
                                         {{-- se presente photo, mostra la photo, altrimenti ne mette una di default --}}
                                         @if (Auth::user()->profile->photo)
                                             <img src="{{ asset('storage/' . Auth::user()->profile->photo) }}"
-                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
+                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100
+                                                height="100">
                                         @else
-                                            <img src="{{ asset('img/default.png') }}" 
-                                                alt="" class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
+                                            <img src="{{ asset('img/default.png') }}" alt=""
+                                                class="rounded-circle mb-2 object-fit-cover" width=100 height="100">
                                         @endif
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
+                                        {{-- arriva uno sponsor --}}
                                     </a>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <button class="btn btn-danger animated mt-2" id="circle-butt">
+                                            <a href="{{ route('admin.sponsorships.index') }}">SPONSOR</a>
+                                        </button>
+                                    </div>
                                     {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
                                     @if (Auth::user()->profile->visibility == 0)
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <div class="m-0 alert alert-danger alert-dismissible fade show" role="alert">
                                             <strong>Attenzione!</strong> Il tuo profilo è nascosto.
                                             {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
                                         </div>
                                     @endif
                                 </li>
+                                <a class="btn btn-bd-primary mt-2 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
+                                    href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
+                                    <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
+                                </a>
                             @endif
-                            <li class="nav-item">
+
+                            <li class="nav-item mt-2">
                                 <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.dashboard' ? 'brand-color-2' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
@@ -87,21 +99,20 @@
                             {{-- condizione se presente user()->profile mostra 'modifica profile' altrimenti mostra 'crea profilo'  --}}
                             @if (Auth::user()->profile)
                                 {{-- mostra il profilo di user()->profile usando admin.profiles.show --}}
-                                <li class="nav-item">
+                                <li class="nav-item mt-2">
                                     <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.index' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.index') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>I tuoi messaggi
                                     </a>
                                 </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
-                                        href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
-                                        <i class="fa-solid fa-user fa-lg fa-fw"></i> Modifica profilo
+                                <li class="nav-item mt-2">
+                                    <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.reviews' ? 'brand-color-2' : '' }}"
+                                        href="{{ route('admin.reviews') }}">
+                                        <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>Recensioni ricevute
                                     </a>
                                 </li>
                             @else
-                                <li class="nav-item">
+                                <li class="nav-item mt-2">
                                     <a class="nav-link text-white rounded-3 {{ Route::currentRouteName() === 'admin.profiles.create' ? 'brand-color-2' : '' }}"
                                         href="{{ route('admin.profiles.create') }}">
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Crea profilo

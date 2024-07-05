@@ -2,10 +2,11 @@
 @import 'resources/scss/_variables';
 @import 'resources/scss/_buttons';
 
-.warning-message{
+.warning-message {
     color: red;
 }
-.password-error{
+
+.password-error {
     display: none;
 }
 
@@ -15,7 +16,8 @@
 }
 
 .brand-color-2 {
-    background-color: #7085c3;;
+    background-color: #7085c3;
+    ;
 }
 
 .brand-text-color-1 {
@@ -32,14 +34,63 @@
 }
 
 .my-d {
-    text-shadow: 2px 2px 4px rgba(var(--bd-violet-rgb), 0.5); 
-  }
+    text-shadow: 2px 2px 4px rgba(var(--bd-violet-rgb), 0.5);
+}
 
-  .testo {
+.testo {
     color: blueviolet;
-  }
+}
 
 
-  .brand-color-2-border {
-   border: #70c3a5 solid 1px;
+.brand-color-2-border {
+    border: #70c3a5 solid 1px;
+}
+
+#circle-butt {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /*
+    background: #A00000;*/
+    font-weight: bold;
+    color: white;
+    border: dashed 3px white;
+    transition: .5s all;
+    animation: circle;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    font-size: 16px;
+}
+
+#circle-butt:hover {
+    border: solid;
+}
+
+#button:hover i {
+    animation: call;
+    animation-duration: 1s;
+}
+
+@keyframes call {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes circle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
