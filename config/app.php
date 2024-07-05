@@ -195,6 +195,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // braintree provider
+        App\Providers\BraintreeServiceProvider::class,
     ],
 
     /*

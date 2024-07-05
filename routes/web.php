@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SponsorshipController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\PaymentController;
 
 
 /*
@@ -47,5 +48,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// payments
+Route::get('payments', [PaymentController::class, 'index'])->name('payments.index');
+Route::post('payments/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');
+Route::get('payments/success', [PaymentController::class, 'success'])->name('payments.success');
+Route::get('payments/error', [PaymentController::class, 'error'])->name('payments.error');
 
 require __DIR__.'/auth.php';
