@@ -19,7 +19,7 @@
                     <td>
                         <a class="btn btn-bd-primary mt-2"
                             href="{{ route('payments.index') }}">
-                            <i class="fa-solid fa-user fa-lg fa-fw"></i> Acquista
+                            <i class="fa-solid fa-money-bill"></i></i> Acquista
                         </a>
                     </td>
                 </tr>
