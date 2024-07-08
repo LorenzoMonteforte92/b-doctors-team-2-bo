@@ -24,7 +24,7 @@
                             <td>{{ $sponsorship->price }}</td>
                             <td>
                                 <label for="{{$sponsorship->id}}"></label>
-                                <input type="checkbox" name="{{$sponsorship->id}}" id="{{$sponsorship->id}}">
+                                <input type="checkbox" name="{{$sponsorship->id}}" id="{{$sponsorship->id}}" value="{{$sponsorship->id}}">
                             </td>
                         </tr>
                     @endforeach
@@ -32,6 +32,7 @@
             </table>
             <div id="dropin-container"></div>
             <input type="hidden" name="sponsorhip_id" value="{{ $sponsorship->id }}">
+            <input type="hidden" name="sponsorhip_name" value="{{ $sponsorship->name }}">
             <input type="hidden" name="profile_id" value="{{ $user->id }}">
             <input type="hidden" name="amount" value="{{$sponsorship->price}}">
             <button type="submit">Submit Payment</button>

@@ -10,6 +10,6 @@ class Sponsorship extends Model
     use HasFactory;
 
     public function profiles() {
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Profile::class, 'profile_sponsorships', 'sponsorship_id', 'profile_id');
     }
 }

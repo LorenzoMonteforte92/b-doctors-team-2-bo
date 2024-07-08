@@ -87,6 +87,9 @@ class ReviewController extends Controller
     $minReviews = $request->input('min_reviews');
     $minRating = $request->input('min_rating');
 
+    if ($specializationSlug) {
+        $specializationSlug = explode(',', $specializationSlug);
+    }
     $profiles = Profile::with(['specialisations', 'reviews'])
         ->leftJoin('profile_specialisation', 'profiles.id', '=', 'profile_specialisation.profile_id')
         ->leftJoin('specialisations', 'profile_specialisation.specialisation_id', '=', 'specialisations.id')
@@ -97,34 +100,36 @@ class ReviewController extends Controller
             'profiles.id',
             'users.name as user_name',
             'users.email as user_mail',
-            'reviews.id as review_id',
-            DB::raw('specialisations.slug as specialization_slug'),
+            DB::raw('GROUP_CONCAT(DISTINCT specialisations.slug) as specialization_slug'),
             DB::raw('COUNT(reviews.id) as review_count'),
             DB::raw('CAST(ROUND(AVG(ratings.score), 1) AS DECIMAL(1,0)) as average_score')
+            
         )
-        ;
-
-    if ($specializationSlug) {
-        $profiles->whereHas('specialisations', function ($query) use ($specializationSlug) {
-            $query->where('slug', 'like', "%{$specializationSlug}%");
+        ->groupBy(
+            'profiles.id',
+            'users.name',
+            'users.email',
+        );
+        if ($specializationSlug) {
+            $profiles->whereHas('specialisations', function ($query) use ($specializationSlug) {
+                $query->whereIn('slug', $specializationSlug);
+            });
+        }
+        if ($minReviews) {
+            $profiles->having('review_count', '>=', $minReviews);
+        }
+    
+        if ($minRating) {
+            $profiles->having('average_score', '>=', $minRating);
+        }
+        $profiles = $profiles->get();
+        $profiles->transform(function ($profile) {
+            $profile->average_score = floatval($profile->average_score);
+            return $profile;
         });
-    }
-
-    if ($minReviews) {
-        $profiles->having('review_count', '>=', $minReviews);
-    }
-
-    if ($minRating) {
-        $profiles->whereHas('reviews', function ($query) use ($minRating) {
-            $query->join('ratings', 'reviews.rating_id', '=', 'ratings.id')
-                  ->havingRaw('ROUND(AVG(ratings.score)) >= ?', [$minRating]);
-        });
-    }
-
-    $profiles = $profiles->groupBy('profiles.id', 'users.name', 'users.email', 'specialisations.slug', 'reviews.id', 'specialization_slug');
-
-    $profiles = $profiles->get();
-
+        if ($minRating) {
+            $profiles->having('average_score', '>=', $minRating);
+        }
     return $profiles;
 }
 public function apiFilterProfiles(Request $request)

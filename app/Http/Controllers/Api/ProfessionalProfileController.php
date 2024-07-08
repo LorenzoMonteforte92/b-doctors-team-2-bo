@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use App\Models\User;
+use App\Models\ProfileSponsorship;
 use Illuminate\Support\Facades\DB;
 
 class ProfessionalProfileController extends Controller
@@ -67,6 +69,15 @@ class ProfessionalProfileController extends Controller
         }
 
         return response()->json($apiData);
+    }
+    public function profileSponsored(){
+        $profileSponsored = ProfileSponsorship::all();
+        $users = User::all();
+
+        return response()->json([
+            'success' => true,
+            'results' => [$profileSponsored, $users],
+        ]);
     }
 
     

@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/profiles', [ProfessionalProfileController::class, 'index']);
+Route::get('/profiles/profile-sponsored', [ProfessionalProfileController::class, 'profileSponsored']);
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/reviewscount', [ReviewController::class, 'countReviews']);
 Route::get('/reviewspecfilter', [ReviewController::class, 'filterBySpecAndRating']);
@@ -36,7 +37,7 @@ Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/messages', [UserMessageController::class, 'store']);
 Route::post('/ratings', [RatingController::class, 'store']);
 
-Route::get('/test', [ReviewController::class, 'filterProfiles']);
+Route::get('/search-results', [ReviewController::class, 'filterProfiles']);
 
 
 
