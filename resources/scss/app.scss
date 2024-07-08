@@ -104,3 +104,24 @@ $speed: 0.5s;
 .ms-b {
 	background-color: #fefdfc;
 }
+
+.ms-silver {
+		background: linear-gradient(45deg, #C0C0C0, #E0E0E0, #A9A9A9);
+		-webkit-background-clip: text;
+		color: transparent;
+		text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.ms-gold {
+        background: linear-gradient(45deg, #FFD700, #FFA500, #FFEC8B);
+        -webkit-background-clip: text;
+        color: transparent;
+		text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.1);
+    }	
+
+	.ms-platinum {
+	    background: linear-gradient(45deg, #8a8987, #4CAF50, #21dd2e, #97b0cc, #7FFF00, #32CD32, #ADFF2F);
+        -webkit-background-clip: text;
+        color: transparent;
+		text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.5);
+    }

@@ -5,11 +5,11 @@
 <body>
     <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <h2>Stai acquistando il pacchetto {{$sponsorships[1]->name}}</h2>
-        <p>
-            Con il pacchetto Silver, il tuo profilo professionale sarà messo in risalto sulla homepage della nostra piattaforma per 24 ore. Questa visibilità privilegiata aumenterà l'esposizione del tuo profilo agli utenti, migliorando significativamente la tua presenza online e aumentando le possibilità di attrarre nuovi pazienti.
+        <h2 class="brand-text-color-1 ">Stai acquistando il <span class="ms-gold"> {{$sponsorships[1]->name}}</span></h2>
+        <p class="brand-text-color-1 fw-bold">
+            Con <span class="ms-gold"> il pacchetto Gold </span>, il tuo profilo professionale sarà messo in risalto sulla homepage della nostra piattaforma per <span class="text-danger">72 ore</span>. Questa visibilità privilegiata aumenterà l'esposizione del tuo profilo agli utenti, migliorando significativamente la tua presenza online e aumentando le possibilità di attrarre nuovi pazienti.
         </p>
-        <p>
+        <p class="brand-text-color-1 fw-bold">
             Approfitta di questa opportunità per far crescere la tua pratica medica e stabilire connessioni più solide con la nostra community di utenti interessati alla salute e al benessere.
         </p>
         
@@ -18,7 +18,7 @@
         <input type="hidden" name="sponsorship_name" value="{{ $sponsorships[1]->name }}">
         <input type="hidden" name="profile_id" value="{{ $user->id }}">
         <input type="hidden" name="amount" value="{{$sponsorships[1]->price}}">
-        <button type="submit">Procedi con il pagamento</button>
+        <button type="submit" class="btn btn-bd-primary mb-4">Procedi con il pagamento</button>
     </form>
 
     <script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
