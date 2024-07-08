@@ -57,6 +57,6 @@
         <p class="brand-text-color-1">Non hai ancora ricevuto recensioni</p>
         <p class="brand-text-color-1">Vuoi ricevere recensioni? Sponsorizza il tuo account!</p>
 
-        <a href="" class="btn btn-bd-primary">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
+        <a href="{{ route('admin.sponsorships.index') }}" class="btn btn-bd-primary">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
     @endif
 @endsection
