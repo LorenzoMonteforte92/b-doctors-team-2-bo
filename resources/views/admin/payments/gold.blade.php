@@ -8,7 +8,7 @@
         <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post" enctype="multipart/form-data">
             @csrf
             <h2>Stai acquistando il pacchetto {{$sponsorships[1]->name}}</h2>
-            <p>descrizione</p>
+            <p>descrcizione</p>
             {{-- <table class="table">
                 <thead>
                     <tr>
