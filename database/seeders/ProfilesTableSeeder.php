@@ -114,3 +114,11 @@ class ProfilesTableSeeder extends Seeder
     //     }
     // }
 }
+
+
+
+        // ->whereIn('specialisations.slug', $specialisations) // filter by multiple specialisations
+        // ->having('review_count', '>=', $minReviews)
+        // ->having('average_score', '>=',  $minAverageScore)
+        // ->having(intval(DB::raw('COUNT(reviews.id)')), '>=', $minReviews)
+        // ->having(floatval(DB::raw('ROUND(AVG(ratings.score))')), '>=', $minAverageScore)
