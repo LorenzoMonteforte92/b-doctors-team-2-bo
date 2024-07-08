@@ -2,6 +2,8 @@
 @import 'resources/scss/_variables';
 @import 'resources/scss/_buttons';
 
+
+
 .warning-message {
     color: red;
 }
@@ -97,4 +99,8 @@ $speed: 0.5s;
 		content: attr(data-front);
 		transform: translateY(0) rotateX(0);
 	}
+}
+
+.ms-b {
+	background-color: #fefdfc;
 }
