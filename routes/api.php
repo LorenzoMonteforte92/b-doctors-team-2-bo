@@ -36,8 +36,8 @@ Route::get('/specialisations/{slug}', [ProfessionalProfileController::class, 'sh
 Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/messages', [UserMessageController::class, 'store']);
 Route::post('/ratings', [RatingController::class, 'store']);
-
 Route::get('/search-results', [ReviewController::class, 'filterProfiles']);
+Route::get('/sponsored', [ProfessionalProfileController::class, 'sponsoredDoctors']);
 
 
 
