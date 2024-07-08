@@ -27,7 +27,7 @@
     <div id="app">
 
         <header class="navbar navbar-dark sticky-top brand-color-1 flex-md-nowrap p-2 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-2" href="/">BD<i
+            <a class="navbar-brand ms-5 col-md-3 col-lg-2 me-0 px-3 fs-2" href="/">BD<i
                     class="fa-solid fa-stethoscope"></i>ctors</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                 data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
