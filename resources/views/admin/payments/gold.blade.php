@@ -1,79 +1,68 @@
 @extends('layouts.admin')
-@section('title')
-    {{ 'Interazioni' }}
-@endsection
+@section('title', 'Interazioni')
 @section('content')
 
-    <body>
-        <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            <h2>Stai acquistando il pacchetto {{$sponsorships[1]->name}}</h2>
-            <p>descrcizione</p>
-            {{-- <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Sponsorizzazione</th>
-                        <th scope="col">Durata</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($sponsorships as $sponsorship)
-                        <tr>
-                            <td scope="row">{{ $sponsorship->name }}</td>
-                            <td>{{ $sponsorship->duration }}</td>
-                            <td>{{ $sponsorship->price }}</td>
-                            <td>
-                                <label for="{{$sponsorship->id}}"></label>
-                                <input type="checkbox" name="{{$sponsorship->id}}" id="{{$sponsorship->id}}" value="{{$sponsorship->id}}">
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table> --}}
-            <div id="dropin-container"></div>
-            <input type="hidden" name="sponsorhip_id" value="{{ $sponsorships[1]->id }}">
-            <input type="hidden" name="sponsorhip_name" value="{{ $sponsorships[1]->name }}">
-            <input type="hidden" name="profile_id" value="{{ $user->id }}">
-            <input type="hidden" name="amount" value="{{$sponsorships[1]->price}}">
-            <button type="submit">Submit Payment</button>
-        </form>
-        <script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
-        <script>
-            const form = document.querySelector('#payment-form');
-            const clientToken = "{{ $clientToken }}";
+<body>
+    <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <h2>Stai acquistando il pacchetto {{$sponsorships[1]->name}}</h2>
+        <p>
+            Con il pacchetto Silver, il tuo profilo professionale sarà messo in risalto sulla homepage della nostra piattaforma per 24 ore. Questa visibilità privilegiata aumenterà l'esposizione del tuo profilo agli utenti, migliorando significativamente la tua presenza online e aumentando le possibilità di attrarre nuovi pazienti.
+        </p>
+        <p>
+            Approfitta di questa opportunità per far crescere la tua pratica medica e stabilire connessioni più solide con la nostra community di utenti interessati alla salute e al benessere.
+        </p>
+        
+        <div id="dropin-container"></div>
+        <input type="hidden" name="sponsorship_id" value="{{ $sponsorships[1]->id }}">
+        <input type="hidden" name="sponsorship_name" value="{{ $sponsorships[1]->name }}">
+        <input type="hidden" name="profile_id" value="{{ $user->id }}">
+        <input type="hidden" name="amount" value="{{$sponsorships[1]->price}}">
+        <button type="submit">Procedi con il pagamento</button>
+    </form>
 
-            braintree.dropin.create({
-                authorization: clientToken,
-                container: '#dropin-container'
-            }, function(createErr, instance) {
-                if (createErr) {
-                    console.log('Create Error', createErr);
-                    return;
-                }
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault();
+    <script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
+    <script>
+        const form = document.querySelector('#payment-form');
+        const clientToken = "{{ $clientToken }}";
 
-                    instance.requestPaymentMethod(function(err, payload) {
-                        if (err) {
-                            console.log('Request Payment Method Error', err);
-                            return;
-                        }
+        braintree.dropin.create({
+            authorization: clientToken,
+            container: '#dropin-container'
+        }, function(createErr, instance) {
+            if (createErr) {
+                console.log('Errore durante la creazione', createErr);
+                return;
+            }
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-                        // Add the nonce to the form and submit
-                        const nonceInput = document.createElement('input');
-                        nonceInput.setAttribute('type', 'hidden');
-                        nonceInput.setAttribute('name', 'payment_method_nonce');
-                        nonceInput.setAttribute('value', payload.nonce);
-                        form.appendChild(nonceInput);
+                instance.requestPaymentMethod(function(err, payload) {
+                    if (err) {
+                        console.log('Errore nella richiesta del metodo di pagamento', err);
+                        return;
+                    }
 
-                        form.submit();
-                    });
+                    // Controlla se il numero di carta termina con 1115
+                    const cardNumber = payload.details.lastFour;
+                    if (cardNumber === '1115') {
+                        // Forza un errore di pagamento
+                        window.location.href = "{{ route('admin.payments.error') }}";
+                        return;
+                    }
+
+                    // Aggiungi il nonce al form e invia
+                    const nonceInput = document.createElement('input');
+                    nonceInput.setAttribute('type', 'hidden');
+                    nonceInput.setAttribute('name', 'payment_method_nonce');
+                    nonceInput.setAttribute('value', payload.nonce);
+                    form.appendChild(nonceInput);
+
+                    form.submit();
                 });
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
 
-    </html>
 @endsection
