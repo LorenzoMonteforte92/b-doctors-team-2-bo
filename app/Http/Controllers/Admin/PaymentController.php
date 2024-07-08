@@ -20,12 +20,26 @@ class PaymentController extends Controller
         $this->gateway = $gateway;
     }
 
-    public function index()
+    public function silver()
     {
         $sponsorships = Sponsorship::all();
         $user = Auth::user();
         $clientToken = $this->gateway->clientToken()->generate();
-        return view('admin.payments.index', compact('clientToken', 'sponsorships', 'user'));
+        return view('admin.payments.silver', compact('clientToken', 'sponsorships', 'user'));
+    }
+    public function gold()
+    {
+        $sponsorships = Sponsorship::all();
+        $user = Auth::user();
+        $clientToken = $this->gateway->clientToken()->generate();
+        return view('admin.payments.gold', compact('clientToken', 'sponsorships', 'user'));
+    }
+    public function platinum()
+    {
+        $sponsorships = Sponsorship::all();
+        $user = Auth::user();
+        $clientToken = $this->gateway->clientToken()->generate();
+        return view('admin.payments.platinum', compact('clientToken', 'sponsorships', 'user'));
     }
 
     public function checkout(Request $request)
@@ -34,7 +48,7 @@ class PaymentController extends Controller
         $user = Auth::user();
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
-        
+
         $result = $this->gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
@@ -42,6 +56,7 @@ class PaymentController extends Controller
             'submitForSettlement' => true
                 ]
             ]);
+
 
         $profileId = $request->profile_id;
         $sponsorshipId = $request->sponsorhip_id;
@@ -80,6 +95,8 @@ class PaymentController extends Controller
                 $endDate = $startDate->addHours(144);
                 $startDate = Carbon::now();
             }
+
+            
             // Crea una nuova riga nella tabella profile_sponsorship
             ProfileSponsorship::create([
                 'profile_id' => $profileId,

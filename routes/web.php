@@ -41,7 +41,9 @@ Route::middleware(['auth', 'verified'])
         'profiles' => 'profile:user_slug'
     ]);
     // payments
-    Route::get('payments', [PaymentController::class, 'index'])->name('payments.index');
+    Route::get('payments/pacchetto-silver', [PaymentController::class, 'silver'])->name('payments.silver');
+    Route::get('payments/pacchetto-gold', [PaymentController::class, 'gold'])->name('payments.gold');
+    Route::get('payments/pacchetto-platinum', [PaymentController::class, 'platinum'])->name('payments.platinum');
     Route::post('payments/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');
     Route::get('payments/success', [PaymentController::class, 'success'])->name('payments.success');
     Route::get('payments/error', [PaymentController::class, 'error'])->name('payments.error');

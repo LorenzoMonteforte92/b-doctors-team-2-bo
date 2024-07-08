@@ -11,19 +11,43 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($sponsorships as $sponsorship)
                 <tr>
-                    <td scope="row">{{ $sponsorship->name }}</td>
-                    <td>{{ $sponsorship->duration }}</td>
-                    <td>{{ $sponsorship->price }}</td>
+                    <td scope="row">Silver</td>
+                    <td>24h</td>
+                    <td>2.99€</td>
+            
                     <td>
                         <a class="btn btn-bd-primary mt-2"
-                            href="{{ route('admin.payments.index') }}">
+                            href="{{ route('admin.payments.silver') }}">
                             <i class="fa-solid fa-money-bill"></i></i> Acquista
                         </a>
                     </td>
                 </tr>
-            @endforeach
+                <tr>
+                    <td scope="row">Gold</td>
+                    <td>72h</td>
+                    <td>5.99€</td>
+            
+                    <td>
+                        <a class="btn btn-bd-primary mt-2"
+                            href="{{ route('admin.payments.gold') }}">
+                            <i class="fa-solid fa-money-bill"></i></i> Acquista
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">Platinum</td>
+                    <td>144h</td>
+                    <td>9.99€</td>
+            
+                    <td>
+                        <a class="btn btn-bd-primary mt-2"
+                            href="{{ route('admin.payments.platinum') }}">
+                            <i class="fa-solid fa-money-bill"></i></i> Acquista
+                        </a>
+                    </td>
+                </tr>
+                
         </tbody>
     </table>
 @endsection
