@@ -80,5 +80,54 @@ class ProfessionalProfileController extends Controller
         ]);
     }
 
+    function sponsoredDoctors(){
+        
+        $sponsored = DB::table('profile_sponsorship')
+        ->join('profiles', 'profile_sponsorship.profile_id','=', 'profiles.id')
+        ->join('sponsorships', 'profile_sponsorship.sponsorship_id', '=', 'sponsorships.id')
+        ->join('users', 'profiles.user_id', '=', 'users.id', )
+        ->join('profile_specialisation', 'profiles.id', 'profile_specialisation.profile_id')
+        ->join('specialisations', 'profile_specialisation.specialisation_id', '=', 'specialisations.id')
+        ->select('sponsorships.name AS spons_name',
+        'profile_sponsorship.*', 
+        'users.name AS user_name', 
+        'users.slug AS user_slug', 
+        'users.email AS user_mail', 
+        'profiles.id AS profile_id', 
+        'profiles.photo', 
+        'profiles.telephone_number',
+        'profiles.bio',
+        'profiles.performance',
+        DB::raw('GROUP_CONCAT(DISTINCT specialisations.slug) as specialization_slug'),
+        DB::raw('GROUP_CONCAT(DISTINCT specialisations.name) as specialization_name'),)
+        ->groupBy(
+            'profile_sponsorship.profile_id', 
+            'profile_sponsorship.sponsorship_id',
+            'profile_sponsorship.start_date',
+            'profile_sponsorship.end_date',
+            'profiles.id', 
+            'profiles.photo', 
+            'profiles.telephone_number',
+            'profiles.bio',
+            'profiles.performance',
+            'users.name',
+            'users.slug',
+            'users.email',
+            'sponsorships.name'
+        )
+        ->get();
+
+        $sponsored = $sponsored->map(function ($item) {
+            $item->specialization_slug = explode(',', $item->specialization_slug);
+            $item->specialization_name = explode(',', $item->specialization_name);
+            return $item;
+        });
+
+        return response()->json([
+                    'success' => true,
+                    'sponsored' => $sponsored
+                ]);
+    }
+
     
 }
