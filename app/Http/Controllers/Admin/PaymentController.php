@@ -39,7 +39,7 @@ class PaymentController extends Controller
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
             'options' => [
-                'submitForSettlement' => true
+            'submitForSettlement' => true
                 ]
             ]);
 
@@ -52,6 +52,15 @@ class PaymentController extends Controller
         $startDate = Carbon::now();
         
         $endDate = null;
+
+        if(ProfileSponsorship::where('profile_id', $profileId)->exists()){
+            ProfileSponsorship::where('profile_id', $profileId)->delete();
+        }
+
+        if(ProfileSponsorship::where('sponsorship_id', $sponsorshipId)->exists()){
+            ProfileSponsorship::where('sponsorship_id', $sponsorshipId)->delete();
+        }
+
         if ($result->success) {
             if (empty($profileId) || empty($sponsorshipId)) {
                 throw new \Exception('Profile ID o Sponsorship ID mancante');
