@@ -7,7 +7,9 @@
     <body>
         <form id="payment-form" action="{{ route('admin.payments.checkout') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <table class="table">
+            <h2>Stai acquistando il pacchetto {{$sponsorships[0]->name}}</h2>
+            <p>descrizione</p>
+            {{-- <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Sponsorizzazione</th>
@@ -29,15 +31,14 @@
                         </tr>
                     @endforeach
                 </tbody>
-            </table>
+            </table> --}}
             <div id="dropin-container"></div>
-            <input type="hidden" name="sponsorhip_id" value="{{ $sponsorship->id }}">
-            <input type="hidden" name="sponsorhip_name" value="{{ $sponsorship->name }}">
+            <input type="hidden" name="sponsorhip_id" value="{{ $sponsorships[0]->id }}">
+            <input type="hidden" name="sponsorhip_name" value="{{ $sponsorships[0]->name }}">
             <input type="hidden" name="profile_id" value="{{ $user->id }}">
-            <input type="hidden" name="amount" value="{{$sponsorship->price}}">
+            <input type="hidden" name="amount" value="{{$sponsorships[0]->price}}">
             <button type="submit">Submit Payment</button>
         </form>
-
         <script src="https://js.braintreegateway.com/web/dropin/1.31.1/js/dropin.min.js"></script>
         <script>
             const form = document.querySelector('#payment-form');
