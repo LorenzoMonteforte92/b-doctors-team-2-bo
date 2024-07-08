@@ -68,10 +68,7 @@ class PaymentController extends Controller
         
         $endDate = null;
 
-        if(!$result->success){
-            return redirect()->route('admin.payments.error')->withErrors('Payment failed.');
-        };
-
+        
         if(ProfileSponsorship::where('profile_id', $profileId)->exists()){
             ProfileSponsorship::where('profile_id', $profileId)->delete();
         }
