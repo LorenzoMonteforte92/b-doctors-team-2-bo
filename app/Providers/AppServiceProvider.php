@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         $profileSponsor = DB::table('profile_sponsorship')
         ->join('profiles', 'profile_sponsorship.profile_id', '=', 'profiles.id' )
         ->select('profiles.id AS profile_id', 'profile_sponsorship.end_date')->get();
+
         View::share('profileSponsor', $profileSponsor);
     }
 }
