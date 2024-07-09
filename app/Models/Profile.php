@@ -29,6 +29,6 @@ class Profile extends Model
     }
 
     public function sponsorships() {
-        return $this->belongsToMany(Sponsorship::class, 'profile_sponsorships', 'profile_id', 'sponsorship_id');
+        return $this->belongsToMany(Sponsorship::class, 'profile_sponsorship', 'profile_id', 'sponsorship_id');
     }
 }

@@ -56,7 +56,7 @@ class PaymentController extends Controller
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
             'options' => [
-                'submitForSettlement' => true
+            'submitForSettlement' => true
             ]
         ]);
 
@@ -66,17 +66,7 @@ class PaymentController extends Controller
         
         // Calcola start_date e end_date basato sul tipo di sponsorizzazione
         $startDate = Carbon::now();
-        $endDate = null;
-
-        // Verifica se esistono record e rimuovili
-        if(ProfileSponsorship::where('profile_id', $profileId)->exists()){
-            ProfileSponsorship::where('profile_id', $profileId)->delete();
-        }
-
-        if(ProfileSponsorship::where('sponsorship_id', $sponsorshipId)->exists()){
-            ProfileSponsorship::where('sponsorship_id', $sponsorshipId)->delete();
-        }
-
+        
         if ($result->success) {
             if (empty($profileId) || empty($sponsorshipId)) {
                 throw new \Exception('Profile ID o Sponsorship ID mancante');
@@ -85,6 +75,28 @@ class PaymentController extends Controller
             // Trova il profilo e la sponsorizzazione
             $profile = Profile::findOrFail($profileId);
             $sponsorship = Sponsorship::findOrFail($sponsorshipId);
+     
+            if(ProfileSponsorship::where('profile_id', $profileId)->exists() ){
+
+                $profileSponsorship = ProfileSponsorship::where('profile_id', $profileId)
+                ->first();
+
+            
+                if ($sponsorshipName === 'Pacchetto Silver') {
+                    $newEndDate = Carbon::parse($profileSponsorship->end_date)->addHours(24);
+                } elseif ($sponsorshipName === 'Pacchetto Gold') {
+                    $newEndDate = Carbon::parse($profileSponsorship->end_date)->addHours(72);
+                } elseif ($sponsorshipName === 'Pacchetto Platinum') {
+                    $newEndDate = Carbon::parse($profileSponsorship->end_date)->addHours(144);
+                }
+
+                $profileSponsorship->where('profile_id', $profileId )->update([
+                    'sponsorship_id' => $sponsorshipId,
+                    'start_date' => Carbon::now(),
+                    'end_date' => $newEndDate
+                ]);
+        
+        } else {
             
             if($sponsorshipName === 'Pacchetto Silver') {
                 $endDate = $startDate->addHours(24);
@@ -93,14 +105,19 @@ class PaymentController extends Controller
             } elseif ($sponsorshipName === 'Pacchetto Platinum'){
                 $endDate = $startDate->addHours(144);
             }
-            
+
             // Crea una nuova riga nella tabella profile_sponsorship
-            ProfileSponsorship::create([
-                'profile_id' => $profileId,
-                'sponsorship_id' => $sponsorshipId,
-                'start_date' => $startDate,
-                'end_date' => $endDate
-            ]);
+        ProfileSponsorship::create([
+            'profile_id' => $profileId,
+            'sponsorship_id' => $sponsorshipId,
+            'start_date' => Carbon::now(),
+            'end_date' => $endDate
+        ]);
+        }
+            
+       
+            
+
             return redirect()->route('admin.payments.success');
         } else {
             return redirect()->route('admin.payments.error')->withErrors('Payment failed.');

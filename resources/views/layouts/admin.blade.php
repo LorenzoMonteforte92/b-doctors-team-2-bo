@@ -70,6 +70,7 @@
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
                                         {{-- arriva uno sponsor --}}
                                     </a>
+                                
                                     <div class="d-flex justify-content-center align-items-center position-relative mt-2">
                                             <a class="btn btn-flip btn-bd-primary {{ Route::currentRouteName() === 'admin.sponsorships.index' ? 'brand-color-2' : '' }}" 
                                             data-back="Acquista una sponsorizzazione" data-front="Aumenta la tua visibilità" 
