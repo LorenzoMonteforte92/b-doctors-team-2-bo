@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\ProfileSponsorship;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $profileSponsor = ProfileSponsorship::all();
+        View::share('profileSponsor', $profileSponsor);
     }
 }
