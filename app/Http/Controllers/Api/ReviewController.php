@@ -98,6 +98,7 @@ class ReviewController extends Controller
         ->leftJoin('ratings', 'reviews.rating_id', '=', 'ratings.id')
         ->select(
             'profiles.id',
+            'profiles.photo',
             'users.name as user_name',
             'users.email as user_mail',
             DB::raw('GROUP_CONCAT(DISTINCT specialisations.slug) as specialization_slug'),
