@@ -83,6 +83,9 @@
                                             {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
                                         </div>
                                     @endif
+
+                        
+
                                 </li>
                                 <a class="btn btn-bd-primary mt-2 {{ Route::currentRouteName() === 'admin.profiles.edit' ? 'brand-color-2' : '' }}"
                                     href="{{ route('admin.profiles.edit', ['profile' => Auth::user()->profile->user_slug]) }}">
