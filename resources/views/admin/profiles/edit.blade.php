@@ -57,27 +57,29 @@
         <div class="mb-4">
             <label for="specialisations" class="form-label brand-text-color-1"><strong>Specializzazioni <strong
                         class="text-danger">*</strong></strong></label><br>
-            @foreach ($specialisations as $specialisation)
-                <span class="form-check">
-                    @if ($errors->any())
-                        <input class="form-check-input @error('specialisations') is-invalid @enderror "
-                            @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox"
-                            value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
-                    @else
-                        <input @checked($profile->specialisations->contains($specialisation)) class="form-check-input" type="checkbox"
-                            name="specialisations[]" value="{{ $specialisation->id }}"
-                            id="specialisation-{{ $specialisation->id }}">
-                    @endif
-                    <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
-                        {{ $specialisation->name }}
-                    </label>
-                    @if ($loop->last)
-                        @error('specialisations')
-                            <div class=" ps-0 pt-2 invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    @endif
-                </span>
-            @endforeach
+            <div class="spec-wrapper w-50">
+                @foreach ($specialisations as $specialisation)
+                    <span class="form-check w-50">
+                        @if ($errors->any())
+                            <input class="form-check-input @error('specialisations') is-invalid @enderror "
+                                @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox"
+                                value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
+                        @else
+                            <input @checked($profile->specialisations->contains($specialisation)) class="form-check-input" type="checkbox"
+                                name="specialisations[]" value="{{ $specialisation->id }}"
+                                id="specialisation-{{ $specialisation->id }}">
+                        @endif
+                        <label class="form-check-label" for="specialisation-{{ $specialisation->id }}">
+                            {{ $specialisation->name }}
+                        </label>
+                        @if ($loop->last)
+                            @error('specialisations')
+                                <div class=" ps-0 pt-2 invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        @endif
+                    </span>
+                @endforeach
+            </div>
         </div>
 
         <div class="mb-4 py-2">

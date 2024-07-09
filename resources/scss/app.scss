@@ -3,7 +3,10 @@
 @import 'resources/scss/_buttons';
 
 
-
+.spec-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+}
 .warning-message {
     color: red;
 }
