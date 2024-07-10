@@ -100,6 +100,7 @@ class ReviewController extends Controller
             'profiles.id',
             'profiles.photo',
             'users.name as user_name',
+            'users.slug as user_slug',
             'users.email as user_mail',
             DB::raw('GROUP_CONCAT(DISTINCT specialisations.slug) as specialization_slug'),
             DB::raw('COUNT(reviews.id) as review_count'),
