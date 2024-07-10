@@ -73,19 +73,19 @@
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
                                         {{-- arriva uno sponsor --}}
                                     </a>
-{{dd($indexedProfileSponsor)}}
-                                    {{-- @dd($profileSponsor[Auth::Id()-1]->end_date) --}}
-                                    @if (isset($profileSponsor[Auth::Id() - 1]))
-                                        @if ($profileSponsor[Auth::Id() - 1]->end_date > now())
-                                            <div
-                                                class="d-flex justify-content-center align-items-center position-relative mt-2">
-                                                <a class="btn btn-flip btn-bd-primary text-danger {{ Route::currentRouteName() === 'admin.sponsorships.index' ? 'brand-color-2' : '' }}"
-                                                    data-back="Prolunga la sponsorizzazione"
-                                                    data-front="Hai attiva la Sponsorizzazione"
-                                                    href="{{ route('admin.sponsorships.index', ['profile' => Auth::user()->profile->user_slug]) }}"></a>
-                                            </div>
-                                            <p class="text-center">Sponsorizzazione attiva fino al {{ $profileSponsor[Auth::Id() - 1]->end_date }}</p>
-                                        @endif
+                                    {{-- {{dd($indexedProfileSponsor)}} --}}
+                                    {{-- @dd($indexedProfileSponsor[Auth::Id() - 1]->end_date) --}}
+                                    {{-- @if (isset($indexedProfileSponsor[Auth::Id()])) --}}
+                                    @if ($indexedProfileSponsor[Auth::Id()]->end_date > now())
+                                        <div
+                                            class="d-flex justify-content-center align-items-center position-relative mt-2">
+                                            <a class="btn btn-flip btn-bd-primary text-danger {{ Route::currentRouteName() === 'admin.sponsorships.index' ? 'brand-color-2' : '' }}"
+                                                data-back="Prolunga la sponsorizzazione"
+                                                data-front="Hai attiva la Sponsorizzazione"
+                                                href="{{ route('admin.sponsorships.index', ['profile' => Auth::user()->profile->user_slug]) }}"></a>
+                                        </div>
+                                        <p class="text-center">Sponsorizzazione attiva fino al
+                                            {{ $indexedProfileSponsor[Auth::Id()]->end_date }}</p>
                                     @else
                                         <div
                                             class="d-flex justify-content-center align-items-center position-relative mt-2 align-middle">
@@ -95,6 +95,7 @@
                                                 href="{{ route('admin.sponsorships.index', ['profile' => Auth::user()->profile->user_slug]) }}"></a>
                                         </div>
                                     @endif
+                                    {{-- @endif --}}
                                     {{-- mostra un alert a seconda della visibility se 0 = nascosto --}}
                                     @if (Auth::user()->profile->visibility == 0)
                                         <div class="m-0 alert alert-danger alert-dismissible fade show" role="alert">
