@@ -11,7 +11,7 @@
 
                     <div class="border-danger my-5">
                         <img src="https://i0.wp.com/nrifuture.com/wp-content/uploads/2022/05/comp_3.gif?fit=800%2C600&ssl=1"
-                            alt="" class="card-img-top">
+                            alt="" class="card-img-fluid">
                     </div>
                     <h1 class="my-3 text-danger">Pagamento non riuscito!</h1>
                     <small class="text-danger">Siamo spiacenti, ma qualcosa ha impedito il completamento del pagamento. Per
