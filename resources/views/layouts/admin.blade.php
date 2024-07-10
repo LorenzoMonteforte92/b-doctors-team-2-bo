@@ -88,9 +88,9 @@
                                         @endif
                                     @else
                                         <div
-                                            class="d-flex justify-content-center align-items-center position-relative mt-2">
-                                            <a class="btn btn-flip btn-bd-primary {{ Route::currentRouteName() === 'admin.sponsorships.index' ? 'brand-color-2' : '' }}"
-                                                data-back="Acquista una sponsorizzazione"
+                                            class="d-flex justify-content-center align-items-center position-relative mt-2 align-middle">
+                                            <a class="btn btn-flip btn-bd-primary p-1 {{ Route::currentRouteName() === 'admin.sponsorships.index' ? 'brand-color-2' : '' }}"
+                                                data-back="Acquista una sponsorizzazione per il tuo profilo"
                                                 data-front="Aumenta la tua visibilità"
                                                 href="{{ route('admin.sponsorships.index', ['profile' => Auth::user()->profile->user_slug]) }}"></a>
                                         </div>
