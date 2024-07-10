@@ -31,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
         ->join('profiles', 'profile_sponsorship.profile_id', '=', 'profiles.id' )
         ->select('profiles.id AS profile_id', 'profile_sponsorship.end_date')->get();
 
-        View::share('profileSponsor', $profileSponsor);
+        $indexedProfileSponsor = $profileSponsor->values()->mapWithKeys(function ($item, $key) {
+            return [$key + 1 => $item];
+        });
+
+        View::share('indexedProfileSponsor', $indexedProfileSponsor);
     }
 }
