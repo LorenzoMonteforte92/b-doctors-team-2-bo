@@ -69,21 +69,16 @@
 
             // Converti i dati di PHP in JavaScript
             let chartData = @json($chartData);
-            console.log(chartData);  // Log dei dati per verifica
 
             // Verifica se chartData contiene dati
             if (chartData.length === 0) {
-                console.error("chartData is empty");
+                console.error("Nessun dato disponibile");
                 return;
             }
 
             // Estrai i dati necessari per il grafico
             let labels = chartData.map(item => item.date);
             let values = chartData.map(item => item.average_rating);
-
-            // Verifica i dati estratti
-            console.log("Labels:", labels);
-            console.log("Values:", values);
 
             // Crea il grafico
             let myChart = new Chart(ctx, {

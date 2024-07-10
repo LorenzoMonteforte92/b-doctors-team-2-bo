@@ -15,6 +15,7 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 
 class ProfessionalProfileController extends Controller
@@ -34,10 +35,24 @@ class ProfessionalProfileController extends Controller
             ->orderBy('date', 'desc')
             ->get();
         $profiles = Profile::all();
-
+        $messageChartData = $messages->map(function ($message) {
+            return [
+                'date' => Carbon::parse($message->date)->format('Y-m'), // Formattiamo la data come 'anno-mese'
+                'count' => 1, // Ogni riga rappresenta un messaggio
+            ];
+        })
+        ->groupBy('date') // Raggruppa per 'date'
+        ->map(function ($item, $key) {
+            return [
+                'date' => $key, // Chiave è la data
+                'count' => $item->sum('count'), // Somma il conteggio dei messaggi per ogni data
+            ];
+        })
+        ->sortBy('date') // Ordina per data
+        ->values(); 
         
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'messageChartData'));
     }
 
     // funzione che rimanda a reviews.blade.php
