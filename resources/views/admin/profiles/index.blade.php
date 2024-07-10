@@ -39,4 +39,5 @@
         <h1 class="brand-text-color-1">Messaggi</h1>
         <p class="brand-text-color-1">Non hai ancora ricevuto messaggi</p>
     @endif
+    
 @endsection

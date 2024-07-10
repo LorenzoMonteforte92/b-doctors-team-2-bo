@@ -35,6 +35,8 @@ class ProfessionalProfileController extends Controller
             ->get();
         $profiles = Profile::all();
 
+        
+
         return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }
 
@@ -49,7 +51,20 @@ class ProfessionalProfileController extends Controller
         $ratings = Rating::all();
         $messages = UserMessage::where('profile_id', $user->id)->get();
         $profiles = Profile::all();
-        return view('admin.profiles.reviews', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'profile'));
+        $chartData = $reviews->sortBy('created_at') // Ordina per data crescente
+        ->groupBy(function ($date) {
+            return \Carbon\Carbon::parse($date->created_at)->format('Y-m'); // Raggruppa per anno e mese
+        })->map(function ($group) {
+            // Calcola la media dei rating per ogni gruppo
+            $averageRating = $group->avg(function ($review) {
+                return $review->rating->score; // Ottieni il valore del rating
+            });
+            return [
+                'date' => $group->first()->created_at->format('Y-m'),
+                'average_rating' => $averageRating,
+            ];
+        })->values(); 
+        return view('admin.profiles.reviews', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'profile', 'chartData'));
     }
 
     /**
