@@ -76,7 +76,7 @@
                                     {{-- {{dd($indexedProfileSponsor)}} --}}
                                     {{-- @dd($indexedProfileSponsor[Auth::Id() - 1]->end_date) --}}
                                     {{-- @if (isset($indexedProfileSponsor[Auth::Id()])) --}}
-                                    @if ($indexedProfileSponsor[Auth::Id()]->end_date > now())
+                                    @if (isset($indexedProfileSponsor[Auth::Id()]->end_date))
                                         <div
                                             class="d-flex justify-content-center align-items-center position-relative mt-2">
                                             <a class="btn btn-flip btn-bd-primary text-danger {{ Route::currentRouteName() === 'admin.sponsorships.index' ? 'brand-color-2' : '' }}"
