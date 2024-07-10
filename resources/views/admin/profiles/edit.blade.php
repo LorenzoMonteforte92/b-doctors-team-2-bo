@@ -57,7 +57,7 @@
         <div class="mb-4">
             <label for="specialisations" class="form-label brand-text-color-1"><strong>Specializzazioni <strong
                         class="text-danger">*</strong></strong></label><br>
-            <div class="spec-wrapper w-50">
+            <div class="spec-wrapper">
                 @foreach ($specialisations as $specialisation)
                     <span class="form-check w-50">
                         @if ($errors->any())

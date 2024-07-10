@@ -50,7 +50,7 @@
         </header>
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block brand-color-1 navbar-dark sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block brand-color-1 navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             @if (Auth::user()->profile)
@@ -146,7 +146,7 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+                <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 pt-3">
                     @yield('content')
                 </main>
             </div>
