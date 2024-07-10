@@ -17,7 +17,7 @@
 
         <div class="mb-4 ">
             <label for="specialisations" class="form-label brand-text-color-1"><strong>Specializzazioni *</strong></label><br>
-            <div class="spec-wrapper w-50">
+            <div class="spec-wrapper">
                 @foreach ($specialisations as $specialisation)
                     <span class="form-check w-50">
                         <input class="form-check-input @error('specialisations') is-invalid @enderror " @checked(in_array($specialisation->id, old('specialisations', []))) name="specialisations[]" type="checkbox" value="{{ $specialisation->id }}" id="specialisation-{{ $specialisation->id }}">
