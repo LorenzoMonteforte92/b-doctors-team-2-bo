@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container">
-    <h2>Statistiche messaggi ricevute</h2>
+    <h2>Statistiche messaggi ricevuti</h2>
     <canvas id="messageChart" width="400" height="200"></canvas>
 </div>
     {{-- se ha recensioni mostra le recensioni, altrimenti mostra un messaggio 'non hai ancora recensioni' e propone una sponsorship --}}
