@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     {{-- Chart.JS --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -57,7 +57,7 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             @if (Auth::user()->profile)
-                                <li class="nav-item">
+                                <li class="nav-item ms-li">
                                     <a class="nav-link text-white rounded-3 d-flex flex-column align-items-center {{ Route::currentRouteName() === 'admin.profiles.show' ? '' : '' }}"
                                         href="{{ route('admin.profiles.show', ['profile' => Auth::user()->profile->user_slug]) }}">
                                         {{-- immagine che mostra la photo in formato thumbnail --}}

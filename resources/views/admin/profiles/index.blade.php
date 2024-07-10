@@ -50,7 +50,7 @@
             // Converti i dati di PHP in JavaScript
             let messageChartData  = @json($messageChartData);
            
-            // Verifica se chartData contiene dati
+            // Verifica se messagechartData contiene dati
             if (messageChartData.length === 0) {
                 console.error("Nessun dato disponibile");
                 return;

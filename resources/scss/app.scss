@@ -2,7 +2,13 @@
 @import 'resources/scss/_variables';
 @import 'resources/scss/_buttons';
 
-
+ul > li {
+	max-width: 90%;
+	&.ms-li{
+		max-width: 40%;
+		margin: 0 auto;
+	}
+}
 .spec-wrapper{
 	display: flex;
 	flex-wrap: wrap;
@@ -95,7 +101,6 @@ $speed: 0.5s;
 		left: 0;
 		opacity: 1;
 		display: block;
-		padding: 0 30px;
 		line-height: 40px;
 		transition: $speed;
 		position: relative;
