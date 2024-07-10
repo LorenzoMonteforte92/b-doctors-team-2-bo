@@ -73,7 +73,7 @@
                                         <span class="badge bg-primary rounded-pill">{{ Auth::user()->name }}</span>
                                         {{-- arriva uno sponsor --}}
                                     </a>
-{{dd($indexedProfileSponsor)}}
+
                                     {{-- @dd($profileSponsor[Auth::Id()-1]->end_date) --}}
                                     @if (isset($profileSponsor[Auth::Id() - 1]))
                                         @if ($profileSponsor[Auth::Id() - 1]->end_date > now())
