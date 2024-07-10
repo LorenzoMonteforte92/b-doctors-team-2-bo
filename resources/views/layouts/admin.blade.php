@@ -81,6 +81,7 @@
                                                     data-front="Hai attiva la Sponsorizzazione"
                                                     href="{{ route('admin.sponsorships.index', ['profile' => Auth::user()->profile->user_slug]) }}"></a>
                                             </div>
+                                            <p class="text-center">Sponsorizzazione attiva fino al {{ $profileSponsor[Auth::Id() - 1]->end_date }}</p>
                                         @endif
                                     @else
                                         <div
