@@ -35,24 +35,10 @@ class ProfessionalProfileController extends Controller
             ->orderBy('date', 'desc')
             ->get();
         $profiles = Profile::all();
-        $messageChartData = $messages->map(function ($message) {
-            return [
-                'date' => Carbon::parse($message->date)->format('Y-m'), // Formattiamo la data come 'anno-mese'
-                'count' => 1, // Ogni riga rappresenta un messaggio
-            ];
-        })
-        ->groupBy('date') // Raggruppa per 'date'
-        ->map(function ($item, $key) {
-            return [
-                'date' => $key, // Chiave è la data
-                'count' => $item->sum('count'), // Somma il conteggio dei messaggi per ogni data
-            ];
-        })
-        ->sortBy('date') // Ordina per data
-        ->values(); 
+        
         
 
-        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'messageChartData'));
+        return view('admin.profiles.index', compact('reviews', 'ratings', 'messages', 'profiles', 'user'));
     }
 
     // funzione che rimanda a reviews.blade.php
@@ -66,20 +52,8 @@ class ProfessionalProfileController extends Controller
         $ratings = Rating::all();
         $messages = UserMessage::where('profile_id', $user->id)->get();
         $profiles = Profile::all();
-        $chartData = $reviews->sortBy('created_at') // Ordina per data crescente
-        ->groupBy(function ($date) {
-            return \Carbon\Carbon::parse($date->created_at)->format('Y-m'); // Raggruppa per anno e mese
-        })->map(function ($group) {
-            // Calcola la media dei rating per ogni gruppo
-            $averageRating = $group->avg(function ($review) {
-                return $review->rating->score; // Ottieni il valore del rating
-            });
-            return [
-                'date' => $group->first()->created_at->format('Y-m'),
-                'average_rating' => $averageRating,
-            ];
-        })->values(); 
-        return view('admin.profiles.reviews', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'profile', 'chartData'));
+        
+        return view('admin.profiles.reviews', compact('reviews', 'ratings', 'messages', 'profiles', 'user', 'profile'));
     }
 
     /**

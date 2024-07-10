@@ -5,10 +5,7 @@
 
 
 @section('content')
-    <div class="container">
-        <h2>Statistiche recensioni ricevute</h2>
-        <canvas id="myChart" width="400" height="200"></canvas>
-    </div>
+    
     {{-- se ha recensioni mostra le recensioni, altrimenti mostra un messaggio 'non hai ancora recensioni' e propone una sponsorship --}}
     @if ($reviews->count() > 0)
         <h1 class="brand-text-color-1">Recensioni Ricevute</h1>
@@ -63,44 +60,5 @@
 
         <a href="{{ route('admin.sponsorships.index') }}" class="btn btn-bd-primary">Sponsor<i class="fas fa-hand-holding-usd"></i></a>
     @endif
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let ctx = document.getElementById('myChart').getContext('2d');
-
-            // Converti i dati di PHP in JavaScript
-            let chartData = @json($chartData);
-
-            // Verifica se chartData contiene dati
-            if (chartData.length === 0) {
-                console.error("Nessun dato disponibile");
-                return;
-            }
-
-            // Estrai i dati necessari per il grafico
-            let labels = chartData.map(item => item.date);
-            let values = chartData.map(item => item.average_rating);
-
-            // Crea il grafico
-            let myChart = new Chart(ctx, {
-                type: 'bar', // Tipo di grafico: 'bar', 'line', 'pie', ecc.
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Valutazione Media Mensile',
-                        data: values,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+    
 @endsection
